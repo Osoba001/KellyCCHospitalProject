@@ -1,0 +1,12 @@
+C:\Users\dell\source\repos\KellyCCBackEndEvaluation2\HospitalRepository\bin\Debug\net6.0\HospitalRepository.deps.json
+C:\Users\dell\source\repos\KellyCCBackEndEvaluation2\HospitalRepository\bin\Debug\net6.0\HospitalRepository.dll
+C:\Users\dell\source\repos\KellyCCBackEndEvaluation2\HospitalRepository\bin\Debug\net6.0\HospitalRepository.pdb
+C:\Users\dell\source\repos\KellyCCBackEndEvaluation2\HospitalRepository\obj\Debug\net6.0\HospitalRepository.csproj.AssemblyReference.cache
+C:\Users\dell\source\repos\KellyCCBackEndEvaluation2\HospitalRepository\obj\Debug\net6.0\HospitalRepository.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\dell\source\repos\KellyCCBackEndEvaluation2\HospitalRepository\obj\Debug\net6.0\HospitalRepository.AssemblyInfoInputs.cache
+C:\Users\dell\source\repos\KellyCCBackEndEvaluation2\HospitalRepository\obj\Debug\net6.0\HospitalRepository.AssemblyInfo.cs
+C:\Users\dell\source\repos\KellyCCBackEndEvaluation2\HospitalRepository\obj\Debug\net6.0\HospitalRepository.csproj.CoreCompileInputs.cache
+C:\Users\dell\source\repos\KellyCCBackEndEvaluation2\HospitalRepository\obj\Debug\net6.0\HospitalRepository.dll
+C:\Users\dell\source\repos\KellyCCBackEndEvaluation2\HospitalRepository\obj\Debug\net6.0\refint\HospitalRepository.dll
+C:\Users\dell\source\repos\KellyCCBackEndEvaluation2\HospitalRepository\obj\Debug\net6.0\HospitalRepository.pdb
+C:\Users\dell\source\repos\KellyCCBackEndEvaluation2\HospitalRepository\obj\Debug\net6.0\ref\HospitalRepository.dll

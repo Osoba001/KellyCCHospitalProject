@@ -1,0 +1,15 @@
+C:\Users\dell\source\repos\KellyCCBackEndEvaluation2\KellyCCBackEndEvaluation2\bin\Debug\net6.0\KellyCCBackEndEvaluation2.exe
+C:\Users\dell\source\repos\KellyCCBackEndEvaluation2\KellyCCBackEndEvaluation2\bin\Debug\net6.0\KellyCCBackEndEvaluation2.deps.json
+C:\Users\dell\source\repos\KellyCCBackEndEvaluation2\KellyCCBackEndEvaluation2\bin\Debug\net6.0\KellyCCBackEndEvaluation2.runtimeconfig.json
+C:\Users\dell\source\repos\KellyCCBackEndEvaluation2\KellyCCBackEndEvaluation2\bin\Debug\net6.0\KellyCCBackEndEvaluation2.dll
+C:\Users\dell\source\repos\KellyCCBackEndEvaluation2\KellyCCBackEndEvaluation2\bin\Debug\net6.0\KellyCCBackEndEvaluation2.pdb
+C:\Users\dell\source\repos\KellyCCBackEndEvaluation2\KellyCCBackEndEvaluation2\obj\Debug\net6.0\KellyCCBackEndEvaluation2.csproj.AssemblyReference.cache
+C:\Users\dell\source\repos\KellyCCBackEndEvaluation2\KellyCCBackEndEvaluation2\obj\Debug\net6.0\KellyCCBackEndEvaluation2.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\dell\source\repos\KellyCCBackEndEvaluation2\KellyCCBackEndEvaluation2\obj\Debug\net6.0\KellyCCBackEndEvaluation2.AssemblyInfoInputs.cache
+C:\Users\dell\source\repos\KellyCCBackEndEvaluation2\KellyCCBackEndEvaluation2\obj\Debug\net6.0\KellyCCBackEndEvaluation2.AssemblyInfo.cs
+C:\Users\dell\source\repos\KellyCCBackEndEvaluation2\KellyCCBackEndEvaluation2\obj\Debug\net6.0\KellyCCBackEndEvaluation2.csproj.CoreCompileInputs.cache
+C:\Users\dell\source\repos\KellyCCBackEndEvaluation2\KellyCCBackEndEvaluation2\obj\Debug\net6.0\KellyCCBackEndEvaluation2.dll
+C:\Users\dell\source\repos\KellyCCBackEndEvaluation2\KellyCCBackEndEvaluation2\obj\Debug\net6.0\refint\KellyCCBackEndEvaluation2.dll
+C:\Users\dell\source\repos\KellyCCBackEndEvaluation2\KellyCCBackEndEvaluation2\obj\Debug\net6.0\KellyCCBackEndEvaluation2.pdb
+C:\Users\dell\source\repos\KellyCCBackEndEvaluation2\KellyCCBackEndEvaluation2\obj\Debug\net6.0\KellyCCBackEndEvaluation2.genruntimeconfig.cache
+C:\Users\dell\source\repos\KellyCCBackEndEvaluation2\KellyCCBackEndEvaluation2\obj\Debug\net6.0\ref\KellyCCBackEndEvaluation2.dll
