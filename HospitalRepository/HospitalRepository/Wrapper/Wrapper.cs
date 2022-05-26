@@ -57,6 +57,35 @@ namespace HospitalRepository.HospitalRepository.Wrapper
                 return _DrugRep;
             }
         }
+        private IHospitalRepo _HospitalRepo;
+
+        public IHospitalRepo HospitalRepo
+        {
+            get
+            {
+                if (_HospitalRepo==null)
+                {
+                    _HospitalRepo = new HospitalRepo(_session);
+                }
+                return _HospitalRepo;
+            }
+          
+        }
+        private IDoctor doctor  ;
+
+        public IDoctor Doctor
+        {
+            get
+            {
+                if (doctor==null)
+                {
+                    doctor = new DoctorRepo(_session);
+                }
+                return doctor;
+            }
+           
+        }
+
 
         public void Commit()
         {

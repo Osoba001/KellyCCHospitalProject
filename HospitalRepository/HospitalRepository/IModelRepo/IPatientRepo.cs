@@ -9,5 +9,10 @@ namespace HospitalRepository.HospitalRepository.IModelRepo
 {
     public interface IPatientRepo: IRepostory<Patient>
     {
+        List<Patient> PatientsSeenByParticularDoctoriEachDay();
+        List<Patient> PatientsSeenWeekly();
+        List<Patient> PatientsSeenMonthly();
+        List<Patient> PatientsSeenQuarterly();
+        List<Patient> PatientsSeenYealy();
     }
 }
