@@ -13,9 +13,9 @@ namespace HospitalRepository.HospitalRepository.BaseRepository
     public class Repository<T>:IRepostory<T> where T : IBaseModel
     {
         protected ISession _session;
-        public Repository()
+        public Repository(ISession session)
         {
-            _session = NHibernateHelper.OpenSession();
+            _session = session;
         }
         public virtual void AddEntity(T entity)
         {

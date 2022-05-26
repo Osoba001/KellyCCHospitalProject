@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace HospitalRepository.HospitalRepository.IModelRepo
 {
-    public interface IReceptionist
+    public interface IReceptionist:IRepostory<Receptionist>
     {
         void BookingApointforPatient(Patient patient,Apointment apointment);
     }

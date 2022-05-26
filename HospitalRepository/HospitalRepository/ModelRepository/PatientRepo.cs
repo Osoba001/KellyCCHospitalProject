@@ -1,4 +1,6 @@
-﻿using HospitalRepository.NHibernateDatabaseAccess.Models;
+﻿using HospitalRepository.HospitalRepository.IModelRepo;
+using HospitalRepository.NHibernateDatabaseAccess.Models;
+using NHibernate;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +9,11 @@ using System.Threading.Tasks;
 
 namespace HospitalRepository.HospitalRepository.ModelRepository
 {
-    public class PatientRepo:Repository<Patient>
+    public class PatientRepo:Repository<Patient>,IPatientRepo
     {
+        public PatientRepo(ISession session):base(session)
+        {
+
+        }
     }
 }
