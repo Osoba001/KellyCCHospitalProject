@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace HospitalRepository.HospitalRepository.ModelRepository
 {
-    public class HospitalRepo:Repository<Hospital>
-    {
-    }
+    //public class HospitalRepo:Repository<Hospital>
+    //{
+    //}
 }

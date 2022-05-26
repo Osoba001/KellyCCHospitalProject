@@ -25,7 +25,7 @@ namespace HospitalRepository.HospitalRepository.Wrapper
             get {
                 if (_patientRepo==null)
                 {
-                    _patientRepo = new PatientRepo();
+                    _patientRepo = new PatientRepo(_session);
                 }
                 return _patientRepo; 
             }
@@ -52,7 +52,7 @@ namespace HospitalRepository.HospitalRepository.Wrapper
             {
                 if (_DrugRep==null)
                 {
-                    _DrugRep = new DrugRepo();
+                    _DrugRep = new DrugRepo(_session);
                 }
                 return _DrugRep;
             }
