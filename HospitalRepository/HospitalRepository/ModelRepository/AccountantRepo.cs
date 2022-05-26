@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HospitalRepository.NHibernateDatabaseAccess.Models
+namespace HospitalRepository.HospitalRepository.ModelRepository
 {
-    public interface IBaseModel
+    internal class AccountantRepo
     {
-         Guid Id { get; set; }
     }
 }

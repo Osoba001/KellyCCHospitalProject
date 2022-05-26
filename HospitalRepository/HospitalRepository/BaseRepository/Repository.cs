@@ -13,7 +13,7 @@ namespace HospitalRepository.HospitalRepository.BaseRepository
     public class Repository<T>:IRepostory<T> where T : IBaseModel
     {
         protected ISession _session;
-        public Repository(ISession session)
+        public Repository()
         {
             _session = NHibernateHelper.OpenSession();
         }
