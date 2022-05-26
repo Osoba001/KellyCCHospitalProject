@@ -31,7 +31,7 @@ namespace HospitalRepository.NHibernateDatabaseAccess
             //Data Source=.;Initial Catalog=Sample1;Integrated Security=True
             _sessionFactory = Fluently.Configure()
                 .Database(MsSqlConfiguration.MsSql2000
-                .ConnectionString(@"Data Source=.;Initial Catalog=Group3SchoolDB;Integrated Security=True")
+                .ConnectionString(@"Data Source=.;Initial Catalog=HospitalDB;Integrated Security=True")
                 .ShowSql()
                 )
                 .Mappings(m => m.FluentMappings
