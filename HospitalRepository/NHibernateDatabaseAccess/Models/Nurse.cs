@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace HospitalRepository.NHibernateDatabaseAccess.Models
 {
-    public class Nurse : Staff
+    public class Nurse : Staff,IBaseModel
     {
         protected Nurse()
         {

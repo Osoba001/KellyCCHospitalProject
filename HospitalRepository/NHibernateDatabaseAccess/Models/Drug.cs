@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HospitalRepository.NHibernateDatabaseAccess.Models
 {
-    public class Drug:BaseEntity
+    public class Drug:BaseEntity,IBaseModel
     {
         protected Drug()
         {
