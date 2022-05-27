@@ -17,7 +17,17 @@ namespace HospitalRepository.HospitalRepository.ModelRepository
             _session=session;
         }
 
-        public List<Doctor> Doctors(Guid huspitalId)
+        public List<Apointment> ApprovedApontment(Guid huspitalId, Guid doctorId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void GivenTreatment(Treatment treatment)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void IsDoctor(Guid huspitalId, Guid doctorId)
         {
             throw new NotImplementedException();
         }

@@ -9,8 +9,8 @@ namespace HospitalRepository.HospitalRepository.IModelRepo
 {
     public interface IDoctor:IRepostory<Doctor> 
     {
-        List<Doctor> Doctors(Guid huspitalId);
         List<Apointment> ApprovedApontment(Guid huspitalId, Guid doctorId);
         void GivenTreatment(Treatment treatment);
+        void IsDoctor(Guid huspitalId, Guid doctorId);
     }
 }

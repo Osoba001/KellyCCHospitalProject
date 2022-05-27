@@ -17,6 +17,7 @@ namespace HospitalRepository.NHibernateDatabaseAccess.Mapping
             Map(x => x.ExpiringDate);
             Map(x => x.ManufactureDate);
             Map(x => x.Photo);
+            Map(x=>x.Quantity);
             References(x=>x.Pharmacist);
         }
     }

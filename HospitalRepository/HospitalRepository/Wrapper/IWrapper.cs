@@ -12,6 +12,11 @@ namespace HospitalRepository.HospitalRepository.Wrapper
         IPatientRepo PatientRepo { get; }
         IDrugRep DrugRep { get; }
         IReceptionist Receptionist { get; }
+        IPharmacist Pharmacist { get; }
+        INurseRepo NurseRepo { get; }
+        IHospitalRepo HospitalRepo { get; }
+        IDoctor DoctorReo { get; }
+        IAcountant Acountant { get; }
         void Commit();
     }
 }

@@ -15,6 +15,7 @@ namespace HospitalRepository.NHibernateDatabaseAccess.Mapping
             Map(x => x.Name);
             Map(x => x.Gender);
             Map(x => x.DOB);
+            Map(x=>x.IsFree);
             Map(x=>x.Specialization);
             References(x => x.Contact);
             References(x => x.Hospital).Cascade.All();

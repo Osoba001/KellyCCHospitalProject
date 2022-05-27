@@ -17,27 +17,27 @@ namespace HospitalRepository.HospitalRepository.ModelRepository
             _session=session;
         }
 
-        public List<Patient> PatientsSeenByParticularDoctoriEachDay(Guid huspitalId)
+        public void BookApointment(Apointment apointment)
         {
             throw new NotImplementedException();
         }
 
-        public List<Patient> PatientsSeenMonthly(Guid huspitalId)
+        public void CancelApointment(Apointment apointment)
         {
             throw new NotImplementedException();
         }
 
-        public List<Patient> PatientsSeenQuarterly(Guid huspitalId)
+        public List<Apointment> GetMyApointments(Guid patientId)
         {
             throw new NotImplementedException();
         }
 
-        public List<Patient> PatientsSeenWeekly(Guid huspitalId)
+        public void PayForDrug(PayForDrug drug)
         {
             throw new NotImplementedException();
         }
 
-        public List<Patient> PatientsSeenYealy(Guid huspitalId)
+        public void PayForTreatment(PayForTreatment treatment)
         {
             throw new NotImplementedException();
         }

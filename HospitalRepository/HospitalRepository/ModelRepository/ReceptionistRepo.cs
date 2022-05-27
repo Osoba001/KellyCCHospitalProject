@@ -17,13 +17,45 @@ namespace HospitalRepository.HospitalRepository.ModelRepository
         {
             _session=session;   
         }
-        public void BookingApointforPatient(Patient patient,Apointment apointment)
+
+        public void AproveApoint(Patient patient, Apointment apointment)
         {
-            if (patient.IsRegister)
-            {
-                apointment.IsApprove = true;
-                _session.Update(apointment);
-            }
+            throw new NotImplementedException();
+        }
+
+        public void BookApointment(Apointment apointment)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Apointment> GetFuctureApoints()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Patient> PatientsSeenByParticularDoctoriEachDay(Guid huspitalId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Patient> PatientsSeenMonthly(Guid huspitalId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Patient> PatientsSeenQuarterly(Guid huspitalId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Patient> PatientsSeenWeekly(Guid huspitalId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Patient> PatientsSeenYealy(Guid huspitalId)
+        {
+            throw new NotImplementedException();
         }
     }
 }

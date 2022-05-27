@@ -11,6 +11,7 @@ namespace HospitalRepository.HospitalRepository.IModelRepo
     {
         List<Apointment> GetFuctureApoints();
         void AproveApoint(Patient patient,Apointment apointment);
+        void BookApointment(Apointment apointment);
         List<Patient> PatientsSeenByParticularDoctoriEachDay(Guid huspitalId);
         List<Patient> PatientsSeenWeekly(Guid huspitalId);
         List<Patient> PatientsSeenMonthly(Guid huspitalId);

@@ -9,5 +9,6 @@ namespace HospitalRepository.HospitalRepository.IModelRepo
 {
     public interface INurseRepo:IRepostory<Nurse>
     {
+       
     }
 }

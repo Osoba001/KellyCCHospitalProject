@@ -17,5 +17,10 @@ namespace HospitalRepository.HospitalRepository.ModelRepository
         {
             _session=session;
         }
+
+        public List<Doctor> Doctors(Guid huspitalId)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
