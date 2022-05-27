@@ -19,11 +19,13 @@ namespace HospitalRepository.NHibernateDatabaseAccess.Models
             List<Nurse> Nurses = new List<Nurse>();
             List<Patient> Patients = new List<Patient>();
             List<Apointment> Apointments = new List<Apointment>();
+            IsFree=true;
         }
         public virtual string Specialization { get; set; }
         public virtual List<Nurse> Nurses { get; set; }
         public virtual List<Patient>  Patients { get; set; }
         public virtual List<Apointment> Apointments { get; set; }
-       
+        public virtual bool IsFree { get; set; }
+
     }
 }

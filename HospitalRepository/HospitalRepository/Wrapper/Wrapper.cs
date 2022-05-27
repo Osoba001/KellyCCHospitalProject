@@ -85,7 +85,59 @@ namespace HospitalRepository.HospitalRepository.Wrapper
             }
            
         }
+        private IPharmacist pharmacist;
 
+        public IPharmacist Pharmacist
+        {
+            get
+            {
+                if (pharmacist==null)
+                {
+                    pharmacist=new PharmacistRepo(_session);
+                }
+                return pharmacist;
+            }
+        }
+        private INurseRepo nurseRepo;
+
+        public INurseRepo NurseRepo
+        {
+            get
+            {
+                if (nurseRepo==null)
+                {
+                    nurseRepo = new NurseRepo(_session);
+                }
+                return nurseRepo;
+            }
+        }
+
+        private IDoctor doctorReo;
+
+        public IDoctor DoctorReo
+        {
+            get
+            {
+                if (doctorReo==null)
+                {
+                    doctorReo = new DoctorRepo(_session);
+                }
+                return doctorReo; 
+            }
+        }
+        private IAcountant acountant;
+
+        public IAcountant Acountant
+        {
+            get
+            {
+                if (acountant==null)
+                {
+                    acountant = new AccountantRepo(_session);
+                }
+                return acountant; 
+            }
+        }
 
         public void Commit()
         {

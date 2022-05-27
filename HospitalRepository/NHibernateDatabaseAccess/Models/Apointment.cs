@@ -21,6 +21,8 @@ namespace HospitalRepository.NHibernateDatabaseAccess.Models
             IsActive =true;
             IsApprove = false;
             BookedTime = DateTime.Now;
+            List<Treatment> Treatments= new List<Treatment>();
+            List<Drug> Drugs= new List<Drug>();
         }
         public string Discription { get; set; }
         public virtual Patient Patient { get; set; }
