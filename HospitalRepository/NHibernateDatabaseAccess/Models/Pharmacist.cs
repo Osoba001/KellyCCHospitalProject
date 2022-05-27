@@ -9,7 +9,7 @@ namespace HospitalRepository.NHibernateDatabaseAccess.Models
 {
     public class Pharmacist: Staff, IBaseModel
     {
-        public Pharmacist(string name, Gender gender, Contact contact, StaffID staffID) : base(name, gender, contact, staffID)
+        public Pharmacist(string name, Gender gender, Contact contact, Hospital hospital) : base(name, gender, contact, hospital)
         {
             List<Drug> Drugs = new List<Drug>();
         }

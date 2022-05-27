@@ -14,11 +14,13 @@ namespace HospitalRepository.NHibernateDatabaseAccess.Mapping
             Id(x => x.Id);
             Map(x=>x.IsActive);
             Map(x => x.IsApprove);
+            Map(x => x.IsAttendedTo);
             Map(x => x.ApointmentTime);
             Map(x => x.BookedTime);
             Map(x => x.Discription);
-            References(x => x.Patient);
+            References(x => x.Patient).Cascade.All();
             References(x => x.Doctor);
+            References(x => x.Hospital).Cascade.All();
         }
     }
 }

@@ -13,7 +13,7 @@ namespace HospitalRepository.NHibernateDatabaseAccess.Models
         {
 
         }
-        public Receptionist(string name, Gender gender, Contact contact, StaffID staffID) : base(name, gender, contact, staffID)
+        public Receptionist(string name, Gender gender, Contact contact, Hospital hospital) : base(name, gender, contact, hospital)
         {
 
         }

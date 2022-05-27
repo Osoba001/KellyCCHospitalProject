@@ -13,7 +13,7 @@ namespace HospitalRepository.NHibernateDatabaseAccess.Models
         {
 
         }
-        public Acountant(string name, Gender gender, Contact contact, StaffID staffID):base(name, gender, contact, staffID) 
+        public Acountant(string name, Gender gender, Contact contact, Hospital hospital) :base(name, gender, contact, hospital) 
         {
 
         }

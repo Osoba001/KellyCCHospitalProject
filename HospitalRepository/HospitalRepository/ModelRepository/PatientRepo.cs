@@ -9,21 +9,12 @@ using System.Threading.Tasks;
 
 namespace HospitalRepository.HospitalRepository.ModelRepository
 {
-    public class PatientRepo:Repository<Patient>,IPatientRepo
+    public class PatientRepo:Repository<Patient>, IPatientRepo
     {
+        protected ISession _session;
         public PatientRepo(ISession session):base(session)
         {
-
-        }
-
-        public List<Patient> Patients(Guid huspitalId)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<Patient> PatientsOwing(Guid huspitalId)
-        {
-            throw new NotImplementedException();
+            _session=session;
         }
 
         public List<Patient> PatientsSeenByParticularDoctoriEachDay(Guid huspitalId)
@@ -47,11 +38,6 @@ namespace HospitalRepository.HospitalRepository.ModelRepository
         }
 
         public List<Patient> PatientsSeenYealy(Guid huspitalId)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<Patient> RegisteredPatients(Guid huspitalId)
         {
             throw new NotImplementedException();
         }

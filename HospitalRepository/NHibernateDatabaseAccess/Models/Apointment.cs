@@ -12,18 +12,20 @@ namespace HospitalRepository.NHibernateDatabaseAccess.Models
         {
 
         }
-        public Apointment(string distriction, Patient patient, Doctor doctor)
+        public Apointment(string distriction, Patient patient, Hospital hospital)
         {
             Discription= distriction;
             Patient= patient;
-            Doctor= doctor;
-            IsActive=true;
+            hospital= Hospital;
+            IsAttendedTo = false;
+            IsActive =true;
             IsApprove = false;
             BookedTime = DateTime.Now;
         }
         public string Discription { get; set; }
         public virtual Patient Patient { get; set; }
         public virtual Doctor Doctor { get; set; }
+        public virtual Hospital Hospital { get; set; }
         private DateTime _apointmentTime;
         public virtual DateTime ApointmentTime
         {
@@ -39,5 +41,6 @@ namespace HospitalRepository.NHibernateDatabaseAccess.Models
         public virtual DateTime BookedTime { get; set; }
         public virtual bool IsActive { get; set; }
         public virtual bool IsApprove { get; set; }
+        public virtual bool IsAttendedTo { get; set; }
     }
 }

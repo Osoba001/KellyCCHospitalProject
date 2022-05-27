@@ -13,7 +13,7 @@ namespace HospitalRepository.NHibernateDatabaseAccess.Models
         {
 
         }
-        public Doctor(string name, Gender gender, Contact contact, StaffID staffID, string area) : base(name, gender, contact, staffID)
+        public Doctor(string name, Gender gender, Contact contact, Hospital hospital, string area) : base(name, gender, contact,  hospital)
         {
             Specialization = area;
             List<Nurse> Nurses = new List<Nurse>();
