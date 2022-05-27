@@ -12,7 +12,8 @@ namespace HospitalRepository.HospitalRepository.IModelRepo
         List<Drug> Top10MostBoughtDrugs(Guid hospitalId,Guid phmId);
         void SeleDrug(BoughtDrug drug);
         void AddNewDrugToStore(Drug drug);
-        void UpdateDrugQuantity(int quantity, Guid drugId, Guid phmId);
-        List<Drug> GetExpiredDrugs(Guid hospitalId);
+        void UpdateDrugQuantity(Drug drug);
+        List<Drug> GetExpiredDrugs(Guid phmId);
+        void RemoveExpiredDrugs(Guid phmId);
     }
 }
