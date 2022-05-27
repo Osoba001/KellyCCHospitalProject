@@ -31,8 +31,8 @@ namespace HospitalRepository.HospitalRepository.Wrapper
             }
 
         }
-        private IReceptionist _Receptionist;
-        public IReceptionist Receptionist
+        private IReceptionistRepo _Receptionist;
+        public IReceptionistRepo Receptionist
         {
             get
             {
@@ -71,9 +71,9 @@ namespace HospitalRepository.HospitalRepository.Wrapper
             }
           
         }
-        private IDoctor doctor  ;
+        private IDoctorRepo doctor  ;
 
-        public IDoctor Doctor
+        public IDoctorRepo Doctor
         {
             get
             {
@@ -85,9 +85,9 @@ namespace HospitalRepository.HospitalRepository.Wrapper
             }
            
         }
-        private IPharmacist pharmacist;
+        private IPharmacistRepo pharmacist;
 
-        public IPharmacist Pharmacist
+        public IPharmacistRepo Pharmacist
         {
             get
             {
@@ -112,9 +112,9 @@ namespace HospitalRepository.HospitalRepository.Wrapper
             }
         }
 
-        private IDoctor doctorReo;
+        private IDoctorRepo doctorReo;
 
-        public IDoctor DoctorReo
+        public IDoctorRepo DoctorReo
         {
             get
             {
@@ -125,9 +125,9 @@ namespace HospitalRepository.HospitalRepository.Wrapper
                 return doctorReo; 
             }
         }
-        private IAcountant acountant;
+        private IAcountantRepo acountant;
 
-        public IAcountant Acountant
+        public IAcountantRepo Acountant
         {
             get
             {
@@ -138,6 +138,118 @@ namespace HospitalRepository.HospitalRepository.Wrapper
                 return acountant; 
             }
         }
+
+        private IAdminRepo admin;
+
+        public IAdminRepo Admin
+        {
+            get
+            {
+                if (admin==null)
+                {
+                    admin = new AdminRepo(_session);
+                }
+                return admin;
+            }
+        }
+
+        private IApointmentRepo apointment;
+
+        public IApointmentRepo Apointment
+        {
+            get
+            {
+                if (apointment==null)
+                {
+                    apointment = new ApointmentRep(_session);
+                }
+                return apointment; 
+            }
+        }
+
+        private IBoughtDrugRepo boughtDrug;
+
+        public IBoughtDrugRepo BoughtDrug
+        {
+            get
+            {
+                if (boughtDrug==null)
+                {
+                    boughtDrug = new BoughtDrugsRepo(_session);
+                }
+                return boughtDrug; 
+            }
+        }
+
+        private IContactRepo contactRepo;
+
+        public IContactRepo ContactRepo
+        {
+            get
+            {
+                if (contactRepo==null)
+                {
+                    contactRepo = new ContactRepo(_session);
+                }
+                return contactRepo;
+            }
+        }
+
+        private IPayForDrugRepo payForDrug;
+
+        public IPayForDrugRepo PayForDrug
+        {
+            get
+            {
+                if (payForDrug==null)
+                {
+                    payForDrug = new PayForDrugsRepo(_session);
+                }
+                return payForDrug; 
+            }
+        }
+
+        private IPayForTreatmentRepo payForTreatmentRepo;
+
+        public IPayForTreatmentRepo PayForTreatmentRepo
+        {
+            get
+            {
+                if (payForTreatmentRepo==null)
+                {
+                    payForTreatmentRepo = new PayForTreatmentRepo(_session);
+                }
+                return payForTreatmentRepo; 
+            }
+        }
+
+        private IStaffIDRepo staffIDRepo;
+
+        public IStaffIDRepo StaffIDRepo
+        {
+            get
+            {
+                if (staffIDRepo==null)
+                {
+                    staffIDRepo = new StaffIDRepo(_session);
+                }
+                return staffIDRepo;
+            }
+        }
+        private ITreatmentRepo treatmentReo;
+
+        public ITreatmentRepo TreatmentReo
+        {
+            get
+            {
+                if (treatmentReo == null)
+                {
+                    treatmentReo = new TreatmentRepo(_session);
+                }
+                return treatmentReo;
+            }
+        }
+
 
         public void Commit()
         {
