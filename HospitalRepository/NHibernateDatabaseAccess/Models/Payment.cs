@@ -12,14 +12,16 @@ namespace HospitalRepository.NHibernateDatabaseAccess.Models
         {
 
         }
-        public Payment(decimal amount, Patient patient)
+        public Payment(decimal amount, Patient patient, Acountant acountant)
         {
             Amount= amount;
             Patient= patient;
-            TimeOfPayment= DateTime.Now;
+            Acountant= acountant;
+            TimeOfPayment = DateTime.Now;
         }
         public virtual decimal Amount { get; set; }
         public virtual Patient Patient { get; set; }
         public virtual DateTime TimeOfPayment { get; set; }
+        public virtual Acountant Acountant { get; set; }
     }
 }

@@ -26,6 +26,8 @@ namespace HospitalRepository.NHibernateDatabaseAccess.Models
         public virtual Patient Patient { get; set; }
         public virtual Doctor Doctor { get; set; }
         public virtual Hospital Hospital { get; set; }
+        public virtual List<Treatment> Treatments  { get; set; }
+        public virtual List<Drug> Drugs { get; set; }
         private DateTime _apointmentTime;
         public virtual DateTime ApointmentTime
         {

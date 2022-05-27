@@ -12,7 +12,7 @@ namespace HospitalRepository.NHibernateDatabaseAccess.Models
         {
 
         }
-        public PayForTreatment(decimal amount, Patient patient, Treatment treatment) : base(amount, patient)
+        public PayForTreatment(decimal amount, Patient patient, Treatment treatment, Acountant acountant) : base(amount, patient,acountant)
         {
             Treatment=treatment;
         }
