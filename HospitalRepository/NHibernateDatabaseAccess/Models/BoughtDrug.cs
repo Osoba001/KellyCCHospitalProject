@@ -12,14 +12,16 @@ namespace HospitalRepository.NHibernateDatabaseAccess.Models
         {
 
         }
-        public BoughtDrug(Patient patient, Drug drug)
+        public BoughtDrug(Patient patient, Drug drug, int quantity)
         {
             Patient=patient;
             Drug=drug;
             Time=DateTime.Now;
+            quantity=quantity;
         }
         public virtual Patient Patient { get; set; }
         public virtual Drug Drug { get; set; }
         public virtual DateTime Time { get; set; }
+        public virtual int Quantity { get; set; }
     }
 }
