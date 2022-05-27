@@ -10,9 +10,10 @@ namespace HospitalRepository.HospitalRepository.ModelRepository
 {
     public class NurseRepo:Repository<Nurse>
     {
+        protected ISession _session;
         public NurseRepo(ISession session) : base(session)
         {
-
+            _session=session;
         }
     }
 }

@@ -12,9 +12,9 @@ namespace HospitalRepository.HospitalRepository.ModelRepository
             _session=session;
         }
 
-        public List<Drug> Top10MostBought()
+        public List<Drug> MostBoughtTop10Drugs()
         {
-            var D= _session.Query<Drug>().ToList();
+           throw new NotImplementedException();
 
         }
     }
