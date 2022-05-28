@@ -1,4 +1,5 @@
 ﻿using HospitalRepository.HospitalEnums;
+using HospitalRepository.HospitalRepository.Wrapper;
 using HospitalRepository.IFunctionalities;
 using System;
 using System.Collections.Generic;
@@ -14,7 +15,7 @@ namespace HospitalRepository.NHibernateDatabaseAccess.Models
         {
 
         }
-        public Patient(string name, string healtStatus, Gender gender, Contact contact, Hospital hospital) : base(name, gender, contact)
+        public Patient(string name, string healtStatus, Gender gender, Hospital hospital) : base(name, gender)
         {
             Hospital = hospital;
             HealthStatus = healtStatus;
@@ -34,32 +35,70 @@ namespace HospitalRepository.NHibernateDatabaseAccess.Models
 
         public void BookApointment(string discription, Patient patient)
         {
-            throw new NotImplementedException();
+            Apointment apointment= new Apointment(discription,patient);
+            var uow = new Wrapper();
+            uow.Apointment.AddEntity(apointment);
+            uow.Commit();
         }
 
-        public void MakePayment(decimal amount, Patient patient)
+        public void MakePayment(decimal amount, Patient patient, Hospital hospital, PaymentFor payingFor)
         {
-            throw new NotImplementedException();
+            Payment payment = new Payment(amount,patient,hospital,payingFor);
+            var uow = new Wrapper();
+            uow.Payment.AddEntity(payment);
+            uow.Commit();
         }
 
         public void CancelApointment(Apointment apointment)
         {
-            throw new NotImplementedException();
+            var uow = new Wrapper();
+            var p = uow.Apointment.FindByPredicate(x => x.Id ==apointment.Id).FirstOrDefault();
+            if (p != null)
+            {
+                p.IsActive = false;
+                uow.Apointment.UpdateEntity(p);
+                uow.Commit();
+            }
+            
         }
 
-        public List<Apointment> GetMyApointments(Guid patientId)
+        public List<Apointment> GetMyApointments(Patient patient)
         {
-            throw new NotImplementedException();
+            var uow = new Wrapper();
+            return uow.Apointment.FindByPredicate(x => x.Patient == patient).ToList();
         }
 
-        public void CreateContact(string phoneNo, string email, string addres, Hospital hospital)
+
+        public void CreatePationt(string name, string healtStatus, Gender gender, Hospital hospital)
         {
-            throw new NotImplementedException();
+            Patient patient = new Patient(name, healtStatus, gender,hospital);
+            var uow = new Wrapper();
+            uow.PatientRepo.AddEntity(patient);
+            uow.Commit();
         }
 
-        public void CreatePationt(string name, string healtStatus, Gender gender, Contact contact, Hospital hospital)
+        public List<BoughtDrug> GetAllPrescibedDrugs(Patient patient)
         {
-            throw new NotImplementedException();
+            var uow = new Wrapper();
+            return uow.BoughtDrug.FindByPredicate(x => x.Patient == patient).ToList();
+        }
+
+        public void RescheduleApointment(Apointment apointment, DateTime time)
+        {
+            var uow = new Wrapper();
+            var p=uow.Apointment.FindByPredicate(x=>x.Id==apointment.Id).FirstOrDefault();
+            if (p!=null)
+            {
+                p.ApointmentTime = time;
+                p.IsApprove = false;
+                uow.Apointment.UpdateEntity(p);
+                uow.Commit();
+            }
+            else
+            {
+                throw new Exception("This appointment does not exist");
+            }
+            
         }
     }
 }

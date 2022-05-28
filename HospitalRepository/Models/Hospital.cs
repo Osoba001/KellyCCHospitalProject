@@ -14,7 +14,7 @@ namespace HospitalRepository.NHibernateDatabaseAccess.Models
         {
 
         }
-        public Hospital(string name, string regNo)
+        public Hospital(string name, string regNo,  string addres)
         {
             Name = name;
             RegistrationNo = regNo;
@@ -23,6 +23,7 @@ namespace HospitalRepository.NHibernateDatabaseAccess.Models
              Pharmacists = new List<Pharmacist>();
             Patients = new List<Patient>();
             StaffId = new List<StaffID>();
+            Address = addres;
         }
         public virtual string Name { get; set; }
         public Admin Administrator { get; set; }
@@ -34,7 +35,9 @@ namespace HospitalRepository.NHibernateDatabaseAccess.Models
         public virtual Receptionist Receptionist { get; set; }
         public virtual Acountant Accountant { get; set; }
         public virtual List<Patient> Patients { get; set; }
-        public virtual Contact Contact { get; set; }
+        public virtual string PhoneNo { get; set; }
+        public virtual string Email { get; set; }
+        public virtual string Address { get; set; }
         public virtual List<StaffID> StaffId { get; set; }
     }
 }

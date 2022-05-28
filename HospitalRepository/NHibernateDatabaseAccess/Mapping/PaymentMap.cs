@@ -8,7 +8,9 @@
             Map(x => x.TimeOfPayment);
             Map(x => x.Amount);
             Map(x => x.IsAprove);
+            Map(x => x.PayingFor);
             References(x => x.Patient);
+            References(x => x.Hospital);
         }
     }
 }

@@ -17,6 +17,7 @@ namespace HospitalRepository.NHibernateDatabaseAccess.Models
         {
 
         }
+        public virtual Doctor Doctor { get; set; }
     }
     
 }

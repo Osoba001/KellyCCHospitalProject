@@ -9,12 +9,9 @@ namespace HospitalRepository.IFunctionalities
 {
     public interface IAcountant
     {
-        List<Patient> PatientsOwing(Guid hospitalId);
-        List<Payment> AllPayment(Guid hospitalId);
-        List<Payment> PaymentInAYear(Guid hospitalId, DateTime year);
-        List<Payment> PaymentInAMonth(Guid hospitalId, DateTime month);
-        List<Payment> PaymentInAWeek(Guid hospitalId, DateTime week);
-        List<Payment> PaymentInADay(Guid hospitalId, DateTime day);
+        public List<Payment> AllPayment(Hospital hospital);
+        List<Patient> PatientsOwing(Hospital hospital);
+        List<Payment> PaymentWithinAPeriod(Hospital hospital, DateTime start, DateTime end);
         void AprovePayment(Payment payment);
     }
 }

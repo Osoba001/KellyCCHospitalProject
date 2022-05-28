@@ -20,7 +20,6 @@ namespace HospitalRepository.HospitalRepository.Wrapper
         IAdminRepo Admin { get; }
         IApointmentRepo Apointment { get; }
         IBoughtDrugRepo BoughtDrug { get; }
-        IContactRepo ContactRepo { get; }
         IPaymentRepo Payment { get; }
         IStaffIDRepo StaffIDRepo { get; }
         ITreatmentRepo TreatmentReo { get; }

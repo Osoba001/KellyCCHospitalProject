@@ -15,7 +15,7 @@ namespace HospitalRepository.NHibernateDatabaseAccess.Models
         {
 
         }
-        public Acountant(string name, Gender gender, Contact contact, Hospital hospital) :base(name, gender, contact, hospital) 
+        public Acountant(string name, Gender gender, string phoneNo, string email, string addres, Hospital hospital) :base(name, gender, phoneNo, email, addres, hospital) 
         {
            
         }
@@ -23,39 +23,54 @@ namespace HospitalRepository.NHibernateDatabaseAccess.Models
 
 
         //Functionalities
-        public List<Patient> PatientsOwing(Guid hospitalId)
+        public List<Patient> PatientsOwing(Hospital hospital)
         {
-            throw new NotImplementedException();
+            var uow = new Wrapper();
+             return uow.PatientRepo.FindByPredicate(x=>x
+             .Treatment.Sum(y=>y.Amount)+(x
+             .Drugs.Where(x=>x.IsPharmacistAprove)
+             .Sum(x=>x.Amount))>x.
+             Payment.Sum(x=>x.Amount) && x
+             .Hospital== hospital).ToList();
         }
 
-        public List<Payment> AllPayment(Guid hospitalId)
+        public List<Payment> AllPayment(Hospital hospital)
         {
-            throw new NotImplementedException();
+            var uow = new Wrapper();
+            return uow.Payment.FindByPredicate(x => x.Hospital == hospital).ToList();
         }
 
-        public List<Payment> PaymentInAYear(Guid hospitalId, DateTime year)
+        public List<Payment> PaymentWithinAPeriod(Hospital hospital, DateTime start, DateTime end)
         {
-            throw new NotImplementedException();
-        }
-
-        public List<Payment> PaymentInAMonth(Guid hospitalId, DateTime month)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<Payment> PaymentInAWeek(Guid hospitalId, DateTime week)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<Payment> PaymentInADay(Guid hospitalId, DateTime day)
-        {
-            throw new NotImplementedException();
+            if (start<=end)
+            {
+                var uow = new Wrapper();
+                return uow.Payment.FindByPredicate(x =>
+                x.TimeOfPayment <= end &&
+                x.TimeOfPayment >= start &&
+                x.Hospital == hospital).ToList();
+            }
+            else
+            {
+                throw new Exception("Start date can not be greater then end date");
+            }
+            
         }
 
         public void AprovePayment(Payment payment)
         {
-            throw new NotImplementedException();
+            var uow = new Wrapper();
+            var p = uow.Payment.FindByPredicate(x => x.Id == payment.Id).FirstOrDefault();
+            if (p!=null)
+            {
+                p.IsAprove = true;
+                uow.Payment.UpdateEntity(p);
+                uow.Commit();
+            }
+            else
+            {
+                throw new Exception("Appointment does not exist");
+            }
         }
     }
 }

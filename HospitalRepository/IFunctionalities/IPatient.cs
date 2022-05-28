@@ -10,10 +10,11 @@ namespace HospitalRepository.IFunctionalities
     public interface IPatient
     {
         void BookApointment(string discription,Patient patient);
-        void MakePayment(decimal amount, Patient patient);
+        void MakePayment(decimal amount, Patient patient, Hospital hospital, PaymentFor payingFor);
         void CancelApointment(Apointment apointment);
-        List<Apointment> GetMyApointments(Guid patientId);
-        void CreateContact(string phoneNo, string email, string addres, Hospital hospital);
-        void CreatePationt(string name, string healtStatus, Gender gender, Contact contact, Hospital hospital);
+        void RescheduleApointment(Apointment apointment, DateTime time);
+        List<BoughtDrug> GetAllPrescibedDrugs(Patient patient);
+        List<Apointment> GetMyApointments(Patient patient);
+        void CreatePationt(string name, string healtStatus, Gender gender, Hospital hospital);
     }
 }

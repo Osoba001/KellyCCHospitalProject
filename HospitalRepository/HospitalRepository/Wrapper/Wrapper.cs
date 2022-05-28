@@ -181,20 +181,6 @@ namespace HospitalRepository.HospitalRepository.Wrapper
             }
         }
 
-        private IContactRepo contactRepo;
-
-        public IContactRepo ContactRepo
-        {
-            get
-            {
-                if (contactRepo==null)
-                {
-                    contactRepo = new ContactRepo(_session);
-                }
-                return contactRepo;
-            }
-        }
-
         private IPaymentRepo payment;
 
         public IPaymentRepo Payment

@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace HospitalRepository.HospitalEnums
 {
-    internal class PaymentFor
+    public enum PaymentFor
     {
+        Drug, Treatment, TreatmentAndDrugs
     }
 }

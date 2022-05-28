@@ -13,13 +13,18 @@ namespace HospitalRepository.NHibernateDatabaseAccess.Models
         {
 
         }
-        public BoughtDrug(Patient patient, Drug drug, int quantity): base(patient)
+        public BoughtDrug(Patient patient, Drug drug, int quantity,string instruction): base(patient)
         {
             Drug=drug;
             quantity=quantity;
             Amount=quantity*drug.UnitPrice;
+            Instructions=instruction;
+            IsPharmacistAprove = false;
         }
         public virtual Drug Drug { get; set; }
         public virtual int Quantity { get; set; }
+        public virtual Doctor Doctor { get; set; }
+        public virtual string Instructions { get; set; }
+        public virtual bool IsPharmacistAprove { get; set; }
     }
 }

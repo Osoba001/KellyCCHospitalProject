@@ -16,7 +16,9 @@ namespace HospitalRepository.NHibernateDatabaseAccess.Mapping
             Map(x => x.Name);
             Map(x => x.RegistrationNo);
             Map(x => x.RegisterDate);
-            HasOne(x => x.Contact);
+            Map(x => x.PhoneNo);
+            Map(x => x.Email);
+            Map(x => x.Address);
             HasOne(x => x.Accountant);
             HasMany(x=> x.Doctors);
             HasMany(x => x.Nurses);

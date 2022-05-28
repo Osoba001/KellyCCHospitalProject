@@ -8,8 +8,10 @@ namespace HospitalRepository.IFunctionalities
 {
     public interface IDoctor
     {
-        List<Apointment> ApprovedApontment(Guid huspitalId, Guid doctorId);
+        List<Apointment> ApprovedApontment(Doctor doctor);
+        List<Apointment> ApprovedApontmentOnAParticularDay(Doctor doctor, DateTime day);
         void GivenTreatment(string name,decimal amount, Patient patient, Doctor doctor);
-        void IsDoctorFree(Guid huspitalId, Guid doctorId);
+        void IsDoctorFree( Doctor doctor);
+        void PrescribeDrug(Doctor doctor, Patient patient, Drug drug, int quantity, string instruction);
     }
 }

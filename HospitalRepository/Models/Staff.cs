@@ -13,9 +13,12 @@ namespace HospitalRepository.NHibernateDatabaseAccess.Models
         {
 
         }
-        public Staff(string name, Gender gender, Contact contact, Hospital hospital):base(name,gender,contact)
+        public Staff(string name, Gender gender, string phoneNo, string email, string addres, Hospital hospital):base(name,gender)
         {
            Hospital= hospital;
+            PhoneNo = phoneNo;
+            Email = email;
+            Address = addres;
         }
         public virtual StaffID StaffId { get; set; }
         public virtual Hospital Hospital { get; set; }

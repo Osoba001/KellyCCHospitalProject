@@ -13,17 +13,20 @@ namespace HospitalRepository.NHibernateDatabaseAccess.Models
         {
 
         }
-        public Person(string name, Gender gender, Contact contact)
+        public Person(string name, Gender gender)
         {
             Name = name;
             Gender = gender;
-            Contact = contact;
+           
         }
         public virtual string Name { get; set; }
         public virtual Gender Gender { get; set; }
-        public virtual Contact Contact { get; set; }
+        public virtual string PhoneNo { get; set; }
+        public virtual string Email { get; set; }
+        public virtual string Address { get; set; }
+    
 
-        private DateTime _dob;
+    private DateTime _dob;
 
         public virtual DateTime DOB
         {

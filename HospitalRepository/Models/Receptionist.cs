@@ -1,4 +1,5 @@
 ﻿using HospitalRepository.HospitalEnums;
+using HospitalRepository.HospitalRepository.Wrapper;
 using HospitalRepository.IFunctionalities;
 using System;
 using System.Collections.Generic;
@@ -14,7 +15,7 @@ namespace HospitalRepository.NHibernateDatabaseAccess.Models
         {
 
         }
-        public Receptionist(string name, Gender gender, Contact contact, Hospital hospital) : base(name, gender, contact, hospital)
+        public Receptionist(string name, Gender gender, string phoneNo, string email, string addres, Hospital hospital) : base(name, gender, phoneNo, email, addres, hospital)
         {
 
         }
@@ -22,6 +23,7 @@ namespace HospitalRepository.NHibernateDatabaseAccess.Models
         //Functionalities
         public List<Apointment> GetFuctureApoints()
         {
+            
             throw new NotImplementedException();
         }
 

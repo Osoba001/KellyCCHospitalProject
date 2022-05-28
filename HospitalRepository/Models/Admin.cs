@@ -15,7 +15,7 @@ namespace HospitalRepository.Models
         {
 
         }
-        public Admin(string name, Gender gender, Contact contact, Hospital hospital) : base(name, gender, contact, hospital)
+        public Admin(string name, Gender gender, string phoneNo, string email, string addres, Hospital hospital) : base(name, gender, phoneNo, email, addres, hospital)
         {
 
         }
