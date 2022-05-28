@@ -12,8 +12,9 @@ namespace HospitalRepository.NHibernateDatabaseAccess.Mapping
         public HospitalMap()
         {
             Id(x => x.Id);
-            Map(x => x.Administrator);
+            HasOne(x => x.Administrator);
             Map(x => x.Name);
+            Map(x => x.RegistrationNo);
             Map(x => x.RegisterDate);
             HasOne(x => x.Contact);
             HasOne(x => x.Accountant);

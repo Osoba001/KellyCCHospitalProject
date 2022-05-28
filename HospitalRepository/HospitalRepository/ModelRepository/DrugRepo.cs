@@ -6,16 +6,9 @@ namespace HospitalRepository.HospitalRepository.ModelRepository
 {
     public class DrugRepo:Repository<Drug>,IDrugRep
     {
-        protected ISession _session;
         public DrugRepo(ISession session) : base(session)
         {
-            _session=session;
         }
 
-        public List<Drug> MostBoughtTop10Drugs()
-        {
-           throw new NotImplementedException();
-
-        }
     }
 }

@@ -22,7 +22,7 @@ namespace HospitalRepository.NHibernateDatabaseAccess.Mapping
             References(x => x.StaffId);
             HasMany(x => x.Nurses);
             HasMany(x => x.Apointments);
-            HasMany(x => x.Patients);
+            HasMany(x => x.Treatments);
         }
     }
 }

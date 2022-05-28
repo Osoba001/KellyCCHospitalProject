@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HospitalRepository.HospitalRepository.IModelRepo
 {
-    internal class IContact
+    public interface IContactRepo:IRepostory<Contact>
     {
     }
 }

@@ -9,27 +9,10 @@ using System.Threading.Tasks;
 
 namespace HospitalRepository.HospitalRepository.ModelRepository
 {
-    public class DoctorRepo:Repository<Doctor>,IDoctor
+    public class DoctorRepo:Repository<Doctor>,IDoctorRepo
     {
-        protected ISession _session;
         public DoctorRepo(ISession session) : base(session)
         {
-            _session=session;
-        }
-
-        public List<Apointment> ApprovedApontment(Guid huspitalId, Guid doctorId)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void GivenTreatment(Treatment treatment)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void IsDoctor(Guid huspitalId, Guid doctorId)
-        {
-            throw new NotImplementedException();
         }
     }
 }

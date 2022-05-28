@@ -12,7 +12,8 @@ namespace HospitalRepository.NHibernateDatabaseAccess.Mapping
         public BoughtDrugMap()
         {
             Id(x => x.Id);
-            Map(x => x.Time);
+            Map(x => x.Date);
+            Map(x => x.Amount);
             Map(x => x.Quantity);
             References(x => x.Patient);
             References(x => x.Drug);

@@ -7,15 +7,8 @@ using System.Threading.Tasks;
 
 namespace HospitalRepository.HospitalRepository.IModelRepo
 {
-    public interface IReceptionist:IRepostory<Receptionist>
+    public interface IReceptionistRepo:IRepostory<Receptionist>
     {
-        List<Apointment> GetFuctureApoints();
-        void AproveApoint(Patient patient,Apointment apointment);
-        void BookApointment(Apointment apointment);
-        List<Patient> PatientsSeenByParticularDoctoriEachDay(Guid huspitalId);
-        List<Patient> PatientsSeenWeekly(Guid huspitalId);
-        List<Patient> PatientsSeenMonthly(Guid huspitalId);
-        List<Patient> PatientsSeenQuarterly(Guid huspitalId);
-        List<Patient> PatientsSeenYealy(Guid huspitalId);
+        
     }
 }

@@ -12,22 +12,20 @@ namespace HospitalRepository.NHibernateDatabaseAccess.Models
         {
 
         }
-        public Apointment(string distriction, Patient patient, Hospital hospital)
+        public Apointment(string distriction, Patient patient)
         {
             Discription= distriction;
             Patient= patient;
-            hospital= Hospital;
             IsAttendedTo = false;
             IsActive =true;
             IsApprove = false;
             BookedTime = DateTime.Now;
-            List<Treatment> Treatments= new List<Treatment>();
-            List<Drug> Drugs= new List<Drug>();
+            Treatments= new List<Treatment>();
+            Drugs= new List<Drug>();
         }
         public string Discription { get; set; }
         public virtual Patient Patient { get; set; }
         public virtual Doctor Doctor { get; set; }
-        public virtual Hospital Hospital { get; set; }
         public virtual List<Treatment> Treatments  { get; set; }
         public virtual List<Drug> Drugs { get; set; }
         private DateTime _apointmentTime;

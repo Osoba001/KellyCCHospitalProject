@@ -12,15 +12,11 @@ namespace HospitalRepository.HospitalRepository.ModelRepository
 {
     public class HospitalRepo : Repository<Hospital>, IHospitalRepo
     {
-        protected ISession _session;
+        protected ISession session;
         public HospitalRepo(ISession session) : base(session)
         {
             _session=session;
         }
 
-        public List<Doctor> Doctors(Guid huspitalId)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

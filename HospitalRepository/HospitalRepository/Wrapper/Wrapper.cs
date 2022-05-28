@@ -195,33 +195,20 @@ namespace HospitalRepository.HospitalRepository.Wrapper
             }
         }
 
-        private IPayForDrugRepo payForDrug;
+        private IPaymentRepo payment;
 
-        public IPayForDrugRepo PayForDrug
+        public IPaymentRepo Payment
         {
             get
             {
-                if (payForDrug==null)
+                if (payment==null)
                 {
-                    payForDrug = new PayForDrugsRepo(_session);
+                    payment = new PaymentRepo(_session);
                 }
-                return payForDrug; 
+                return payment; 
             }
         }
 
-        private IPayForTreatmentRepo payForTreatmentRepo;
-
-        public IPayForTreatmentRepo PayForTreatmentRepo
-        {
-            get
-            {
-                if (payForTreatmentRepo==null)
-                {
-                    payForTreatmentRepo = new PayForTreatmentRepo(_session);
-                }
-                return payForTreatmentRepo; 
-            }
-        }
 
         private IStaffIDRepo staffIDRepo;
 

@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace HospitalRepository.HospitalRepository.ModelRepository
 {
-    internal class ContactRepo
+    public class ContactRepo:Repository<Contact>,IContactRepo
     {
+        public ContactRepo(ISession session) : base(session)
+        {
+
+        }
     }
 }

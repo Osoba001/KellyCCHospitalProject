@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace HospitalRepository.HospitalRepository.ModelRepository
 {
-    public class ReceptionistRepo : Repository<Receptionist>, IReceptionist
+    public class ReceptionistRepo : Repository<Receptionist>, IReceptionistRepo
     {
         protected ISession _session;
         public ReceptionistRepo(ISession session):base(session)
@@ -18,44 +18,5 @@ namespace HospitalRepository.HospitalRepository.ModelRepository
             _session=session;   
         }
 
-        public void AproveApoint(Patient patient, Apointment apointment)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void BookApointment(Apointment apointment)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<Apointment> GetFuctureApoints()
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<Patient> PatientsSeenByParticularDoctoriEachDay(Guid huspitalId)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<Patient> PatientsSeenMonthly(Guid huspitalId)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<Patient> PatientsSeenQuarterly(Guid huspitalId)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<Patient> PatientsSeenWeekly(Guid huspitalId)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<Patient> PatientsSeenYealy(Guid huspitalId)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

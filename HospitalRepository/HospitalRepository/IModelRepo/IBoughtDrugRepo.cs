@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HospitalRepository.HospitalRepository.IModelRepo
 {
-    internal class IBoughtDrug
+    public interface IBoughtDrugRepo:IRepostory<BoughtDrug>
     {
     }
 }

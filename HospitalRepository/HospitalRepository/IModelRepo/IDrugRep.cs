@@ -9,6 +9,6 @@ namespace HospitalRepository.HospitalRepository.IModelRepo
 {
     public interface IDrugRep:IRepostory<Drug>
     {
-        List<Drug> MostBoughtTop10Drugs();
+       
     }
 }

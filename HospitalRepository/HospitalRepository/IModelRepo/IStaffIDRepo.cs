@@ -1,4 +1,5 @@
-﻿using System;
+﻿global using HospitalRepository.NHibernateDatabaseAccess.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace HospitalRepository.HospitalRepository.IModelRepo
 {
-    internal class IStaffID
+    public interface IStaffIDRepo:IRepostory<StaffID>
     {
     }
 }

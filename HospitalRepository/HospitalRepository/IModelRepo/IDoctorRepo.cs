@@ -7,10 +7,8 @@ using System.Threading.Tasks;
 
 namespace HospitalRepository.HospitalRepository.IModelRepo
 {
-    public interface IDoctor:IRepostory<Doctor> 
+    public interface IDoctorRepo:IRepostory<Doctor> 
     {
-        List<Apointment> ApprovedApontment(Guid huspitalId, Guid doctorId);
-        void GivenTreatment(Treatment treatment);
-        void IsDoctor(Guid huspitalId, Guid doctorId);
+       
     }
 }

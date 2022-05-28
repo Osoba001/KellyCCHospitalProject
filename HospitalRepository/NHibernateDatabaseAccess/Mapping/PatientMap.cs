@@ -14,6 +14,7 @@ namespace HospitalRepository.NHibernateDatabaseAccess.Mapping
 
             Id(x => x.Id);
             Map(x => x.Name);
+            Map(x=>x.HealthStatus);
             Map(x => x.Gender);
             Map(x => x.DOB);
             Map(x=>x.IsRegister);
@@ -22,6 +23,8 @@ namespace HospitalRepository.NHibernateDatabaseAccess.Mapping
             HasMany(x => x.Drugs);
             HasMany(x => x.Treatment);
             HasMany(x => x.Payment);
+            HasMany(x => x.Apointments);
+
 
         }
     }

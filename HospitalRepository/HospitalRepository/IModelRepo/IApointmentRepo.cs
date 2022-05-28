@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HospitalRepository.HospitalRepository.IModelRepo
 {
-    internal class IApointment
+    public interface IApointmentRepo:IRepostory<Apointment>
     {
     }
 }

@@ -1,4 +1,5 @@
 ﻿using HospitalRepository.HospitalEnums;
+using HospitalRepository.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,19 +14,19 @@ namespace HospitalRepository.NHibernateDatabaseAccess.Models
         {
 
         }
-        public Hospital(string name, string address, Contact contact)
+        public Hospital(string name, string regNo)
         {
             Name = name;
-            Address = address;
-            Contact = contact;
-            List<Doctor> Doctors =new List<Doctor>();
-            List<Nurse> Nurses=new List<Nurse>();
-            List<Pharmacist> Pharmacists = new List<Pharmacist>();
-            List<Patient> Patients = new List<Patient>();
+            RegistrationNo = regNo;
+             Doctors =new List<Doctor>();
+             Nurses=new List<Nurse>();
+             Pharmacists = new List<Pharmacist>();
+            Patients = new List<Patient>();
+            StaffId = new List<StaffID>();
         }
         public virtual string Name { get; set; }
-        public string Administrator { get; set; }
-        public virtual string Address { get; set; }
+        public Admin Administrator { get; set; }
+        public virtual string RegistrationNo { get; set; }
         public virtual DateOnly RegisterDate { get; set; }
         public virtual List<Doctor> Doctors { get; set; }
         public virtual List<Nurse> Nurses { get; set; }

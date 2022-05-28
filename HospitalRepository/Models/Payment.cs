@@ -6,22 +6,22 @@ using System.Threading.Tasks;
 
 namespace HospitalRepository.NHibernateDatabaseAccess.Models
 {
-    public class Payment:BaseEntity
+    public class Payment:BaseEntity,IBaseModel
     {
         public Payment()
         {
 
         }
-        public Payment(decimal amount, Patient patient, Acountant acountant)
+        public Payment(decimal amount, Patient patient)
         {
             Amount= amount;
             Patient= patient;
-            Acountant= acountant;
             TimeOfPayment = DateTime.Now;
+            IsAprove = false;
         }
         public virtual decimal Amount { get; set; }
         public virtual Patient Patient { get; set; }
         public virtual DateTime TimeOfPayment { get; set; }
-        public virtual Acountant Acountant { get; set; }
+        public virtual bool  IsAprove { get; set; }
     }
 }

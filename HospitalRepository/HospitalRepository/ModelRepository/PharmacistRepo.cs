@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace HospitalRepository.HospitalRepository.ModelRepository
 {
-    public class PharmacistRepo:Repository<Pharmacist>,IPharmacist
+    public class PharmacistRepo:Repository<Pharmacist>,IPharmacistRepo
     {
         protected ISession _session;
         public PharmacistRepo(ISession session):base(session)
@@ -17,34 +17,5 @@ namespace HospitalRepository.HospitalRepository.ModelRepository
             _session=session;
         }
 
-        public void AddNewDrugToStore(Drug drug)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<Drug> GetExpiredDrugs(Guid phmId)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void RemoveExpiredDrugs(Guid phmId)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void SeleDrug(BoughtDrug drug)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<Drug> Top10MostBoughtDrugs(Guid hospitalId, Guid phmId)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void UpdateDrugQuantity(Drug drug)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

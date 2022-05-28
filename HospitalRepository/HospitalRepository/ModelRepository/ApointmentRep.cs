@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace HospitalRepository.HospitalRepository.ModelRepository
 {
-    internal class ApointmentRep
+    public class ApointmentRep:Repository<Apointment>,IApointmentRepo
     {
+        public ApointmentRep(ISession session) : base(session)
+        {
+
+        }
     }
 }

@@ -12,11 +12,12 @@ namespace HospitalRepository.NHibernateDatabaseAccess.Models
         {
 
         }
-        public Contact(string phoneNo, string email,string addres)
+        public Contact(string phoneNo, string email,string addres, Hospital hospital)
         {
             PhoneNo = phoneNo;
             Email = email;
             Address = addres;
+            Hospital = hospital;
         }
         public virtual Hospital Hospital { get; set; }
         public virtual string PhoneNo { get; set; }
