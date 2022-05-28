@@ -50,9 +50,9 @@ namespace HospitalRepository.HospitalRepository.BaseRepository
             return _session.Query<T>().Where(x => x.Id == id) != null;
         }
 
-        public virtual void RomoveEntity(Guid id)
+        public virtual void RomoveEntity(T entity)
         {
-            var p = _session.Query<T>().FirstOrDefault(x => x.Id == id);
+            var p = _session.Query<T>().FirstOrDefault(x => x.Id == entity.Id);
             if (p != null)
             {
                 _session.Delete(p);

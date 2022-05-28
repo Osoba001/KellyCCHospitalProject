@@ -12,7 +12,7 @@ namespace HospitalRepository.NHibernateDatabaseAccess.Models
         {
 
         }
-        public Drug(string name, DateOnly exp, DateOnly manufac, decimal unitprice, int quantity , Pharmacist pharmacist)
+        public Drug(string name, DateTime exp, DateTime manufac, decimal unitprice, int quantity , Pharmacist pharmacist)
         {
             Name = name;
             ExpiringDate = exp;
@@ -22,8 +22,8 @@ namespace HospitalRepository.NHibernateDatabaseAccess.Models
             Quantity = quantity;
         }
         public virtual string Name { get; set; }
-        public virtual DateOnly ExpiringDate { get; set; }
-        public virtual DateOnly ManufactureDate { get; set; }
+        public virtual DateTime ExpiringDate { get; set; }
+        public virtual DateTime ManufactureDate { get; set; }
         public virtual decimal UnitPrice { get; set; }
         public virtual string Photo { get; set; }
         public virtual Pharmacist Pharmacist { get; set; }

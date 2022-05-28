@@ -1,4 +1,5 @@
 ﻿using HospitalRepository.HospitalEnums;
+using HospitalRepository.HospitalRepository.Wrapper;
 using HospitalRepository.IFunctionalities;
 using System;
 using System.Collections.Generic;
@@ -16,40 +17,67 @@ namespace HospitalRepository.NHibernateDatabaseAccess.Models
         }
         public virtual List<Drug> Drugs { get; set; }
 
+
         //Functionalities
-        public void AddNewDrugToStore(string name, DateOnly exp, DateOnly manufac, decimal unitprice, int quantity, Pharmacist pharmacist)
+        public void AddNewDrugToStore(string name, DateTime exp, DateTime manufac, decimal unitprice, int quantity, Pharmacist pharmacist)
         {
-            throw new NotImplementedException();
+            Drug drug=new Drug(name, exp, manufac, unitprice, quantity, pharmacist);
+            var uow = new Wrapper();
+            uow.DrugRep.AddEntity(drug);
+            uow.Commit();
         }
 
-        public List<Drug> GetAllDrugs(Guid phmId)
+        public List<Drug> GetAllDrugs(Pharmacist pharmacist)
         {
-            throw new NotImplementedException();
+            var uow = new Wrapper();
+            return uow.DrugRep.FindByPredicate(x => x.Pharmacist == pharmacist).ToList();
         }
 
-        public List<Drug> GetExpiredDrugs(Guid phmId)
+        public List<Drug> GetExpiredDrugs(Pharmacist pharmacist)
         {
-            throw new NotImplementedException();
+            var uow = new Wrapper();
+            return uow.DrugRep.FindByPredicate(x=>x.ExpiringDate<=DateTime.Now && pharmacist==pharmacist).ToList();
         }
 
-        public void RemoveDrugs(Guid phmId)
+        public void RemoveDrugs(Drug drug)
         {
-            throw new NotImplementedException();
+            var uow = new Wrapper();
+            uow.DrugRep.RomoveEntity(drug);
+            uow.Commit();
         }
 
-        public void RemoveExpiredDrugs(Guid phmId)
+        public void RemoveExpiredDrugs(Pharmacist pharmacist)
         {
-            throw new NotImplementedException();
+            var uow = new Wrapper();
+            var p=uow.DrugRep.FindByPredicate(x=>x.ExpiringDate>=DateTime.Now && x.Pharmacist== pharmacist).ToList();
+            p.ForEach(x => uow.DrugRep.RomoveEntity(x));
+            uow.Commit();
         }
 
-        public void SeleDrug(Patient patient, Drug drug, int quantity)
+        public void SellDoctorPrescibedDrug(BoughtDrug drug)
         {
-            throw new NotImplementedException();
+            drug.IsPharmacistAprove = true;
+            var uow = new Wrapper();
+            uow.BoughtDrug.UpdateEntity(drug);
+            var d=uow.DrugRep.FindByPredicate(x=>x.Id==drug.Drug.Id).FirstOrDefault();
+            d.Quantity++;
+            uow.DrugRep.UpdateEntity(d);
+            uow.Commit();
         }
 
-        public List<Drug> Top10MostBoughtDrugs(Guid hospitalId, Guid phmId)
+        public void SellNewDrug(Patient patient, Drug drug, int quantity, string instruction)
         {
-            throw new NotImplementedException();
+           BoughtDrug newdrug=new BoughtDrug(patient, drug, quantity, instruction);
+            newdrug.IsPharmacistAprove = true;
+            var uow = new Wrapper();
+            uow.BoughtDrug.AddEntity(newdrug);
+            uow.Commit();
+        }
+
+        public List<Drug> Top10MostBoughtDrugs(Hospital hospital)
+        {
+            var uow = new Wrapper();
+            return uow.BoughtDrug.FindByPredicate(x=>x.)
         }
 
         public void UpdateDrug(Drug drug)

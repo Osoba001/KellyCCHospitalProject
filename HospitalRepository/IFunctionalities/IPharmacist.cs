@@ -8,13 +8,14 @@ namespace HospitalRepository.IFunctionalities
 {
     public interface IPharmacist
     {
-        List<Drug> GetAllDrugs(Guid phmId);
-        List<Drug> Top10MostBoughtDrugs(Guid hospitalId, Guid phmId);
-        void SeleDrug(Patient patient, Drug drug, int quantity);
-        void AddNewDrugToStore(string name, DateOnly exp, DateOnly manufac, decimal unitprice, int quantity, Pharmacist pharmacist);
+        List<Drug> GetAllDrugs(Pharmacist pharmacist);
+        List<Drug> Top10MostBoughtDrugs(Hospital hospital);
+        void SellNewDrug(Patient patient, Drug drug, int quantity,string instruction);
+        void SellDoctorPrescibedDrug(BoughtDrug drug);
+        void AddNewDrugToStore(string name, DateTime exp, DateTime manufac, decimal unitprice, int quantity, Pharmacist pharmacist);
         void UpdateDrug(Drug drug);
-        List<Drug> GetExpiredDrugs(Guid phmId);
-        void RemoveExpiredDrugs(Guid phmId);
-        void RemoveDrugs(Guid phmId);
+        List<Drug> GetExpiredDrugs(Pharmacist pharmacist);
+        void RemoveExpiredDrugs(Pharmacist pharmacist);
+        void RemoveDrugs(Drug drug);
     }
 }

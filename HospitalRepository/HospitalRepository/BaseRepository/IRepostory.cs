@@ -16,6 +16,6 @@ namespace HospitalRepository.HospitalRepository.BaseRepository
         IEnumerable<T> FindByPredicate(Expression<Func<T, bool>> predicate);
         void AddEntity(T entity);
         void UpdateEntity(T entity);
-        void RomoveEntity(Guid id);
+        void RomoveEntity(T entity);
     }
 }
