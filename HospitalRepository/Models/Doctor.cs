@@ -30,21 +30,19 @@ namespace HospitalRepository.NHibernateDatabaseAccess.Models
         public virtual List<Treatment> Treatments { get; set; }
 
         //Functionalities
+        IWrapper uow = new Wrapper();
         public List<Apointment> ApprovedApontment(Doctor doctor)
         {
-            var uow = new Wrapper();
             return uow.Apointment.FindByPredicate(x => x.IsApprove && x.Doctor==doctor).ToList();
         }
         public List<Apointment> ApprovedApontmentOnAParticularDay(Doctor doctor, DateTime day)
         {
-            var uow = new Wrapper();
             return uow.Apointment.FindByPredicate(x=>x.ApointmentTime.Day==day.Day && x.Doctor == doctor && x.IsApprove).ToList();
         }
 
-        public void GivenTreatment(string name, decimal amount, Patient patient, Doctor doctor)
+        public void GivenTreatment(string name, Patient patient, Doctor doctor)
         {
-            var uow = new Wrapper();
-            Treatment treatment = new Treatment(name, amount, doctor);
+            Treatment treatment = new Treatment(patient, name, doctor);
             uow.TreatmentReo.AddEntity(treatment);
             patient.Bills.Treatments.Add(treatment);
             uow.PatientRepo.UpdateEntity(patient);
@@ -53,7 +51,6 @@ namespace HospitalRepository.NHibernateDatabaseAccess.Models
 
         public void IsDoctorFree(Doctor doctor)
         {
-            var uow=new Wrapper();
             var d=uow.DoctorReo.FindByPredicate(x=>x.Id==doctor.Id).FirstOrDefault();
             if (d!=null)
             {
@@ -66,8 +63,7 @@ namespace HospitalRepository.NHibernateDatabaseAccess.Models
 
         public void PrescribeDrug(Doctor doctor, Patient patient, Drug drug, int quantity, string instruction)
         {
-            BoughtDrug drugToBuy = new BoughtDrug(drug, quantity, instruction);
-            var uow = new Wrapper();
+            BoughtDrug drugToBuy = new BoughtDrug(patient, drug, quantity, instruction);
             uow.BoughtDrug.AddEntity(drugToBuy);
             uow.Commit();
         }
@@ -81,36 +77,6 @@ namespace HospitalRepository.NHibernateDatabaseAccess.Models
             uow.Commit();
         }
 
-        public void AddTreatmentToAppointment(Apointment apointment, Treatment treatment)
-        {
-            var uow = new Wrapper();
-            apointment.Treatments.Add(treatment);
-            uow.Apointment.UpdateEntity(apointment);
-            uow.Commit();
-        }
-
-        public void RemoveTreatmentFromAppointment(Apointment apointment, Treatment treatment)
-        {
-            var uow = new Wrapper();
-            apointment.Treatments.Remove(treatment);
-            uow.Apointment.UpdateEntity(apointment);
-            uow.Commit();
-        }
-
-        public void AddBoughtDrugToAppointment(Apointment apointment, BoughtDrug drug)
-        {
-            var uow = new Wrapper();
-            apointment.Drugs.Add(drug);
-            uow.Apointment.UpdateEntity(apointment);
-            uow.Commit();
-        }
-
-        public void RemoveBoughtDrugFromAppointment(Apointment apointment, BoughtDrug drug)
-        {
-            var uow = new Wrapper();
-            apointment.Drugs.Remove(drug);
-            uow.Apointment.UpdateEntity(apointment);
-            uow.Commit();
-        }
+       
     }
 }

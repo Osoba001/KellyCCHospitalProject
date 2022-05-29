@@ -10,7 +10,7 @@
             Map(x => x.IsAprove);
             Map(x => x.PayingFor);
             References(x => x.Patient);
-            References(x => x.Hospital);
+            References(x => x.Hospital).Cascade.All();
         }
     }
 }

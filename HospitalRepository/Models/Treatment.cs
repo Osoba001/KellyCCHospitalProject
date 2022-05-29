@@ -13,11 +13,10 @@ namespace HospitalRepository.NHibernateDatabaseAccess.Models
         {
 
         }
-        public Treatment(Patient patient, string name, decimal amount, Doctor doctor)
+        public Treatment(Patient patient, string name, Doctor doctor)
         {
             Name = name;
             Patient= patient;
-            Amount = amount;
             Doctor =doctor;
             Date = DateTime.Now;
         }

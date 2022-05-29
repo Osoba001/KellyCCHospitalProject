@@ -14,7 +14,7 @@ namespace HospitalRepository.NHibernateDatabaseAccess.Mapping
             Id(x => x.Id);
             HasMany(x => x.BoughtDrugs);
             HasMany(x => x.Treatments);
-            References(x => x.Patient);
+            References(x => x.Patient).Cascade.All();
         }
     }
 }

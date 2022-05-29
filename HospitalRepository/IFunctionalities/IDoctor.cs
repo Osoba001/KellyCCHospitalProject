@@ -10,7 +10,7 @@ namespace HospitalRepository.IFunctionalities
     {
         List<Apointment> ApprovedApontment(Doctor doctor);
         List<Apointment> ApprovedApontmentOnAParticularDay(Doctor doctor, DateTime day);
-        void GivenTreatment(string name,decimal amount, Patient patient, Doctor doctor);
+        void GivenTreatment(string name, Patient patient, Doctor doctor);
         void IsDoctorFree( Doctor doctor);
         void PrescribeDrug(Doctor doctor, Patient patient, Drug drug, int quantity, string instruction);
         void AttendToApointment(Apointment apointment);

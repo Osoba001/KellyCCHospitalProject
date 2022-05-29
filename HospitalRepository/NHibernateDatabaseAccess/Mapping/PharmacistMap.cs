@@ -18,7 +18,7 @@ namespace HospitalRepository.NHibernateDatabaseAccess.Mapping
             Map(x => x.PhoneNo);
             Map(x => x.Email);
             Map(x => x.Address);
-            References(x => x.StaffId);
+            HasOne(x => x.StaffId);
             References(x => x.Hospital).Cascade.All();
             HasMany(x => x.Drugs);
         }

@@ -14,6 +14,6 @@ namespace HospitalRepository.IFunctionalities
         List<Payment> PaymentWithinAPeriod(Hospital hospital, DateTime start, DateTime end);
         void AprovePayment(Payment payment);
         void BillPatientOnDrug(Patient patient, BoughtDrug boughtDrug);
-        void BillPatientOnTreatment(Patient patient, Treatment treatment);
+        void BillPatientOnTreatment(Patient patient,Treatment treatment, decimal amount);
     }
 }

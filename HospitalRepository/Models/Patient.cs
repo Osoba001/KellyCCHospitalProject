@@ -48,9 +48,15 @@ namespace HospitalRepository.NHibernateDatabaseAccess.Models
             }
             else
             {
-                Apointment apointment = new Apointment(discription, patient);
-                apointment.ApointmentTime = time;
-                uow.Apointment.AddEntity(apointment);
+                 p= new Apointment(patient);
+                p.ApointmentTime = time;
+                p.IsApprove = false;
+                p.IsActive = true;
+                p.IsAttendedTo = false;
+                p.Discription = discription;
+                p.BookedTime = DateTime.Now;
+                p.ApointmentTime = time;
+                uow.Apointment.AddEntity(p);
             }
             
             uow.Commit();
