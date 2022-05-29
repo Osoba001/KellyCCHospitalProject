@@ -12,7 +12,7 @@ namespace HospitalRepository.NHibernateDatabaseAccess.Models
 {
     public class Patient:Person,IBaseModel,IPatient
     {
-        protected Patient()
+        public Patient()
         {
 
         }
@@ -62,7 +62,7 @@ namespace HospitalRepository.NHibernateDatabaseAccess.Models
             uow.Commit();
         }
 
-        public void MakePayment(decimal amount, Patient patient, Hospital hospital, PaymentFor payingFor)
+        public virtual void MakePayment(decimal amount, Patient patient, Hospital hospital, PaymentFor payingFor)
         {
             Payment payment = new Payment(amount,patient,hospital,payingFor);
             var uow = new Wrapper();
@@ -70,7 +70,7 @@ namespace HospitalRepository.NHibernateDatabaseAccess.Models
             uow.Commit();
         }
 
-        public void CancelApointment(Apointment apointment)
+        public virtual void CancelApointment(Apointment apointment)
         {
             var uow = new Wrapper();
             var p = uow.Apointment.FindByPredicate(x => x.Id ==apointment.Id).FirstOrDefault();
@@ -84,14 +84,14 @@ namespace HospitalRepository.NHibernateDatabaseAccess.Models
             
         }
 
-        public List<Apointment> GetMyApointment(Patient patient)
+        public virtual List<Apointment> GetMyApointment(Patient patient)
         {
             var uow = new Wrapper();
             return uow.Apointment.FindByPredicate(x => x.Patient == patient).ToList();
         }
 
 
-        public void CreatePationt(string name, string healtStatus, Gender gender, Hospital hospital)
+        public virtual void CreatePationt(string name, string healtStatus, Gender gender, Hospital hospital)
         {
             Patient patient = new Patient(name, healtStatus, gender,hospital);
             var uow = new Wrapper();
@@ -99,13 +99,13 @@ namespace HospitalRepository.NHibernateDatabaseAccess.Models
             uow.Commit();
         }
 
-        public List<BoughtDrug> GetAllPrescibedDrugs(Patient patient)
+        public virtual List<BoughtDrug> GetAllPrescibedDrugs(Patient patient)
         {
             var uow = new Wrapper();
             return uow.BoughtDrug.FindByPredicate(x => x.Patient == patient).ToList();
         }
 
-        public void RescheduleApointment(Apointment apointment, DateTime time)
+        public virtual void RescheduleApointment(Apointment apointment, DateTime time)
         {
             var uow = new Wrapper();
             var p=uow.Apointment.FindByPredicate(x=>x.Id==apointment.Id).FirstOrDefault();
@@ -123,7 +123,7 @@ namespace HospitalRepository.NHibernateDatabaseAccess.Models
             
         }
 
-        public List<Drug> GetAllDrugs(Hospital hospital)
+        public virtual List<Drug> GetAllDrugs(Hospital hospital)
         {
             var uow = new Wrapper();
             return uow.DrugRep.FindByPredicate(x => x.Pharmacist.Hospital == hospital).ToList();

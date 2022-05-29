@@ -11,7 +11,7 @@ namespace HospitalRepository.NHibernateDatabaseAccess.Models
 {
     public class Doctor: Staff, IBaseModel,IDoctor
     {
-        protected Doctor()
+        public Doctor()
         {
 
         }

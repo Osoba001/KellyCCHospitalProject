@@ -8,11 +8,11 @@ namespace HospitalRepository.NHibernateDatabaseAccess.Models
 {
     public class StaffID:BaseEntity,IBaseModel
     {
-        protected StaffID()
+        public StaffID()
         {
 
         }
-        public StaffID(string idnumber, DateOnly exp, Hospital hospital )
+        public StaffID(string idnumber, DateTime exp, Hospital hospital )
         {
             IdNumber=idnumber;
             ExpiringDate=exp;
@@ -21,8 +21,8 @@ namespace HospitalRepository.NHibernateDatabaseAccess.Models
         }
         public virtual string IdNumber { get; set; }
         public virtual bool IsUse { get; set; }
-        public virtual DateOnly ExpiringDate { get; set; }
-        public virtual DateOnly IssueDate { get; set; }
+        public virtual DateTime ExpiringDate { get; set; }
+        public virtual DateTime IssueDate { get; set; }
         public virtual Hospital Hospital { get; set; }
     }
 }

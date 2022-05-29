@@ -10,7 +10,7 @@ namespace HospitalRepository.NHibernateDatabaseAccess.Models
 {
     public class Hospital:BaseEntity, IBaseModel
     {
-        protected Hospital()
+        public Hospital()
         {
 
         }
@@ -28,7 +28,7 @@ namespace HospitalRepository.NHibernateDatabaseAccess.Models
         public virtual string Name { get; set; }
         public virtual Admin Administrator { get; set; }
         public virtual string RegistrationNo { get; set; }
-        public virtual DateOnly RegisterDate { get; set; }
+        public virtual DateTime RegisterDate { get; set; }
         public virtual List<Doctor> Doctors { get; set; }
         public virtual List<Nurse> Nurses { get; set; }
         public virtual List<Pharmacist> Pharmacists { get; set; }

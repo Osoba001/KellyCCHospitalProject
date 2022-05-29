@@ -11,7 +11,7 @@ namespace HospitalRepository.NHibernateDatabaseAccess.Models
 {
     public class Receptionist : Staff,IBaseModel,IReceptionist
     {
-        protected Receptionist()
+        public Receptionist()
         {
 
         }
@@ -96,7 +96,7 @@ namespace HospitalRepository.NHibernateDatabaseAccess.Models
             Apointment.ApointmentType == ApointmentType.Monthly).ToList();
         }
 
-        public List<Patient> PatientsSeenQuarterly(Doctor doctor)
+        public virtual List<Patient> PatientsSeenQuarterly(Doctor doctor)
         {
             return uow.PatientRepo.FindByPredicate(x => x.
              Apointment.Doctor == doctor && x.

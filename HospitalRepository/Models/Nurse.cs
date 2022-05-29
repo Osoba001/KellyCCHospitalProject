@@ -9,7 +9,7 @@ namespace HospitalRepository.NHibernateDatabaseAccess.Models
 {
     public class Nurse : Staff,IBaseModel
     {
-        protected Nurse()
+        public Nurse()
         {
 
         }

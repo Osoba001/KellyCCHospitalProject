@@ -12,7 +12,7 @@ namespace HospitalRepository.NHibernateDatabaseAccess.Models
 {
     public class Acountant: Staff,IBaseModel,IAcountant
     {
-        protected Acountant()
+        public Acountant()
         {
 
         }

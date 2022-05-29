@@ -9,7 +9,7 @@ namespace HospitalRepository.NHibernateDatabaseAccess.Models
 {
     public class Staff:Person
     {
-        protected Staff()
+        public Staff()
         {
 
         }

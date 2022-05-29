@@ -9,7 +9,7 @@ namespace HospitalRepository.NHibernateDatabaseAccess.Models
 {
     public class BoughtDrug: BaseEntity, IBaseModel
     {
-        protected BoughtDrug()
+        public BoughtDrug()
         {
 
         }

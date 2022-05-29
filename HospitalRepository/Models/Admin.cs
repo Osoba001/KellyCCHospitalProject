@@ -22,42 +22,42 @@ namespace HospitalRepository.Models
 
 
         //Functionalities
-        public Acountant Acountant(Guid huspitalIds)
+        public virtual Acountant Acountant(Guid huspitalIds)
         {
             throw new NotImplementedException();
         }
 
-        public void CreateHospital(Hospital hospital)
+        public virtual void CreateHospital(Hospital hospital)
         {
             throw new NotImplementedException();
         }
 
-        public List<Doctor> Doctors(Guid huspitalId)
+        public virtual List<Doctor> Doctors(Guid huspitalId)
         {
             throw new NotImplementedException();
         }
 
-        public List<Staff> GetAllStaff(Guid huspitalIds)
+        public virtual List<Staff> GetAllStaff(Guid huspitalIds)
         {
             throw new NotImplementedException();
         }
 
-        public List<Nurse> Nurses(Guid huspitalIds)
+        public virtual List<Nurse> Nurses(Guid huspitalIds)
         {
             throw new NotImplementedException();
         }
 
-        public List<Patient> Patients(Guid huspitalIds)
+        public virtual List<Patient> Patients(Guid huspitalIds)
         {
             throw new NotImplementedException();
         }
 
-        public List<Pharmacist> pharmacists(Guid huspitalIds)
+        public virtual List<Pharmacist> pharmacists(Guid huspitalIds)
         {
             throw new NotImplementedException();
         }
 
-        public Receptionist Receptionist(Guid huspitalIds)
+        public virtual Receptionist Receptionist(Guid huspitalIds)
         {
             throw new NotImplementedException();
         }
