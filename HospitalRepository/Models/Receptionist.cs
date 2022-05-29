@@ -65,8 +65,8 @@ namespace HospitalRepository.NHibernateDatabaseAccess.Models
                 apointment.Discription = discription;
                 apointment.BookedTime = DateTime.Now;
                 apointment.ApointmentTime = time;
-                patient.Apointment=apointment;
-                uow.PatientRepo.UpdateEntity(patient);
+                uow.Apointment.AddEntity(apointment);
+                
             }
 
             uow.Commit();

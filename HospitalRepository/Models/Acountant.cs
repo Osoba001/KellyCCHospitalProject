@@ -24,9 +24,9 @@ namespace HospitalRepository.NHibernateDatabaseAccess.Models
 
 
         //Functionalities
+        IWrapper uow = new Wrapper();
         public List<Patient> PatientsOwing(Hospital hospital)
         {
-            var uow = new Wrapper();
              return uow.PatientRepo.FindByPredicate(x=>x
              .Bills.AmountBilled>x.
              Payment.Sum(x=>x.Amount) && x
@@ -43,7 +43,6 @@ namespace HospitalRepository.NHibernateDatabaseAccess.Models
         {
             if (start<=end)
             {
-                var uow = new Wrapper();
                 return uow.Payment.FindByPredicate(x =>
                 x.TimeOfPayment <= end &&
                 x.TimeOfPayment >= start &&
@@ -58,7 +57,6 @@ namespace HospitalRepository.NHibernateDatabaseAccess.Models
 
         public void AprovePayment(Payment payment)
         {
-            var uow = new Wrapper();
             var p = uow.Payment.FindByPredicate(x => x.Id == payment.Id).FirstOrDefault();
             if (p!=null)
             {
@@ -74,7 +72,6 @@ namespace HospitalRepository.NHibernateDatabaseAccess.Models
 
         public void BillPatientOnDrug(Patient patient, BoughtDrug boughtDrug)
         {
-            var uow=new Wrapper();
             var b=uow.BillRepo.FindByPredicate(x=>x.Patient==patient).FirstOrDefault();
             if (b==null) patient.Bills = new Bills(patient);
             b.BoughtDrugs.Add(boughtDrug);
@@ -84,7 +81,6 @@ namespace HospitalRepository.NHibernateDatabaseAccess.Models
 
         public void BillPatientOnTreatment(Patient patient, Treatment treatment, decimal amount)
         {
-            var uow = new Wrapper();
             treatment.Amount=amount;
             var b = uow.BillRepo.FindByPredicate(x => x.Patient == patient).FirstOrDefault();
             if (b == null) patient.Bills = new Bills(patient);
