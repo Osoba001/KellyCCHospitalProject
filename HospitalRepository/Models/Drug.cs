@@ -27,7 +27,7 @@ namespace HospitalRepository.NHibernateDatabaseAccess.Models
         public virtual string Purpose { get; set; }
         public virtual string Caution { get; set; }
         public virtual decimal UnitPrice { get; set; }
-        public virtual ByteArrayContent Photo { get; set; }
+        public virtual string Photo { get; set; }
         public virtual Pharmacist Pharmacist { get; set; }
         public virtual Hospital Hospital { get; set; }
         public virtual List<BoughtDrug> BoughtDrugs { get; set; }
