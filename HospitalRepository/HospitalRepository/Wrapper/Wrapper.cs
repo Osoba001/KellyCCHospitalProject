@@ -223,6 +223,20 @@ namespace HospitalRepository.HospitalRepository.Wrapper
             }
         }
 
+        private IBillRepo billRepo;
+
+        public IBillRepo BillRepo
+        {
+            get
+            {
+                if (billRepo==null)
+                {
+                    billRepo = new BillRepo(_session);
+                }
+                return billRepo; 
+            }
+        }
+
 
         public void Commit()
         {

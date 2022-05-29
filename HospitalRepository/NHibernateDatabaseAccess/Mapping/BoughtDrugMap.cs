@@ -13,13 +13,12 @@ namespace HospitalRepository.NHibernateDatabaseAccess.Mapping
         {
             Id(x => x.Id);
             Map(x => x.Date);
-            Map(x => x.Amount);
             Map(x => x.Quantity);
             Map(x => x.IsPharmacistAprove);
             Map(x => x.Instructions);
-            References(x => x.Patient);
             References(x => x.Drug);
             References(x => x.Doctor);
+            References(x => x.Patient);
         }
     }
 }

@@ -7,19 +7,24 @@ using System.Threading.Tasks;
 
 namespace HospitalRepository.NHibernateDatabaseAccess.Models
 {
-    public class Treatment: HospitalService
+    public class Treatment:BaseEntity ,IBaseModel
     {
         public Treatment()
         {
 
         }
-        public Treatment(string name, Patient patient, decimal amount, Doctor doctor):base(patient)
+        public Treatment(Patient patient, string name, decimal amount, Doctor doctor)
         {
             Name = name;
+            Patient= patient;
             Amount = amount;
             Doctor =doctor;
+            Date = DateTime.Now;
         }
         public virtual string Name { get; set; }
         public virtual Doctor Doctor { get; set; }
+        public virtual DateTime Date { get; set; }
+        public virtual decimal Amount { get; set; }
+        public virtual Patient Patient { get; set; }
     }
 }

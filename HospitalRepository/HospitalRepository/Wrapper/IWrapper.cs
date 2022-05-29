@@ -23,6 +23,7 @@ namespace HospitalRepository.HospitalRepository.Wrapper
         IPaymentRepo Payment { get; }
         IStaffIDRepo StaffIDRepo { get; }
         ITreatmentRepo TreatmentReo { get; }
+        IBillRepo BillRepo { get; }
         void Commit();
     }
 }

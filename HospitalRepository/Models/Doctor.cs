@@ -44,8 +44,10 @@ namespace HospitalRepository.NHibernateDatabaseAccess.Models
         public void GivenTreatment(string name, decimal amount, Patient patient, Doctor doctor)
         {
             var uow = new Wrapper();
-            Treatment treatment = new Treatment(name, patient, amount, doctor);
+            Treatment treatment = new Treatment(name, amount, doctor);
             uow.TreatmentReo.AddEntity(treatment);
+            patient.Bills.Treatments.Add(treatment);
+            uow.PatientRepo.UpdateEntity(patient);
             uow.Commit();
         }
 
@@ -64,7 +66,7 @@ namespace HospitalRepository.NHibernateDatabaseAccess.Models
 
         public void PrescribeDrug(Doctor doctor, Patient patient, Drug drug, int quantity, string instruction)
         {
-            BoughtDrug drugToBuy = new BoughtDrug(patient, drug, quantity, instruction);
+            BoughtDrug drugToBuy = new BoughtDrug(drug, quantity, instruction);
             var uow = new Wrapper();
             uow.BoughtDrug.AddEntity(drugToBuy);
             uow.Commit();
@@ -103,7 +105,7 @@ namespace HospitalRepository.NHibernateDatabaseAccess.Models
             uow.Commit();
         }
 
-        public void RemoveBoughtDrugToAppointment(Apointment apointment, BoughtDrug drug)
+        public void RemoveBoughtDrugFromAppointment(Apointment apointment, BoughtDrug drug)
         {
             var uow = new Wrapper();
             apointment.Drugs.Remove(drug);

@@ -7,24 +7,28 @@ using System.Threading.Tasks;
 
 namespace HospitalRepository.NHibernateDatabaseAccess.Models
 {
-    public class BoughtDrug: HospitalService
+    public class BoughtDrug: BaseEntity, IBaseModel
     {
         protected BoughtDrug()
         {
 
         }
-        public BoughtDrug(Patient patient, Drug drug, int quantity,string instruction): base(patient)
+        public BoughtDrug(Patient patient, Drug drug, int quantity,string instruction)
         {
             Drug=drug;
-            quantity=quantity;
-            Amount=quantity*drug.UnitPrice;
+            Quantity = quantity;
+            Patient=patient;
             Instructions=instruction;
             IsPharmacistAprove = false;
+            Date=DateTime.Now;
         }
+        public virtual Patient Patient { get; set; }
         public virtual Drug Drug { get; set; }
         public virtual int Quantity { get; set; }
         public virtual Doctor Doctor { get; set; }
         public virtual string Instructions { get; set; }
         public virtual bool IsPharmacistAprove { get; set; }
+        public virtual DateTime Date { get; set; }
+        public virtual decimal Amount => Drug.UnitPrice * Quantity;
     }
 }

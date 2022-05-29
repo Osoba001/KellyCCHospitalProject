@@ -15,8 +15,8 @@ namespace HospitalRepository.NHibernateDatabaseAccess.Mapping
             Map(x => x.Name);
             Map(x => x.Date);
             Map(x => x.Amount);
-            References(x => x.Patient);
             References(x => x.Doctor);
+            References(x => x.Patient);
         }
     }
 }

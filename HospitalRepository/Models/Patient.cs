@@ -1,6 +1,7 @@
 ﻿using HospitalRepository.HospitalEnums;
 using HospitalRepository.HospitalRepository.Wrapper;
 using HospitalRepository.IFunctionalities;
+using HospitalRepository.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,14 +21,12 @@ namespace HospitalRepository.NHibernateDatabaseAccess.Models
             Hospital = hospital;
             HealthStatus = healtStatus;
             IsRegister = false;
-            Treatment = new List<Treatment>();
-            Drugs = new List<BoughtDrug>();
             Payment = new List<Payment>();
+            Bills = new Bills();
         }
         public virtual Hospital Hospital { get; set; }
-        public virtual List<Treatment> Treatment { get; set; }
-        public virtual List<BoughtDrug> Drugs { get; set; }
         public virtual List<Payment> Payment { get; set; }
+        public virtual Bills Bills { get; set; }
         public virtual Apointment Apointment { get; set; }
         public virtual bool IsRegister { get; set; }
         public virtual string HealthStatus { get; set; }

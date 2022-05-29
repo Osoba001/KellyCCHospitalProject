@@ -19,24 +19,22 @@ namespace HospitalRepository.NHibernateDatabaseAccess.Models
 
 
         //Functionalities
+        IWrapper uow = new Wrapper();
         public void AddNewDrugToStore(string name, string purpose, string cauction, decimal unitprice, int quantity, Pharmacist pharmacist, Hospital hospital)
         {
             Drug drug=new Drug(name, purpose, cauction, unitprice, quantity, pharmacist,hospital);
-            var uow = new Wrapper();
             uow.DrugRep.AddEntity(drug);
             uow.Commit();
         }
 
         public List<Drug> GetAllDrugs(Pharmacist pharmacist)
         {
-            var uow = new Wrapper();
             return uow.DrugRep.FindByPredicate(x => x.Pharmacist == pharmacist).ToList();
         }
 
 
         public void RemoveDrugs(Drug drug)
         {
-            var uow = new Wrapper();
             uow.DrugRep.RomoveEntity(drug);
             uow.Commit();
         }
@@ -44,30 +42,25 @@ namespace HospitalRepository.NHibernateDatabaseAccess.Models
         public void SellDoctorPrescibedDrug(BoughtDrug drug)
         {
             drug.IsPharmacistAprove = true;
-            var uow = new Wrapper();
             uow.BoughtDrug.UpdateEntity(drug);
+            var p = drug.Patient.Bills;
+            p.BoughtDrugs.Add(drug);
             var d=uow.DrugRep.FindByPredicate(x=>x.Id==drug.Drug.Id).FirstOrDefault();
-            if (d!=null)
-            {
-                d.Quantity = -drug.Quantity;
-                uow.DrugRep.UpdateEntity(d);
-                uow.Commit();
-            }
-            else
-            {
-                throw new Exception("Drug dose not exist in the record");
-            }
-            
+            d.Quantity = -drug.Quantity;
+            uow.DrugRep.UpdateEntity(d);
+            uow.Commit();
+
         }
 
         public void SellDrug(Patient patient, Drug drug, int quantity, string instruction)
         {
            BoughtDrug newdrug=new BoughtDrug(patient, drug, quantity, instruction);
             newdrug.IsPharmacistAprove = true;
-            var uow = new Wrapper();
             drug.Quantity = -quantity;
             uow.DrugRep.UpdateEntity(drug);
             uow.BoughtDrug.AddEntity(newdrug);
+            patient.Bills.BoughtDrugs.Add(newdrug);
+            uow.PatientRepo.UpdateEntity(patient);
             uow.Commit();
         }
 
@@ -80,7 +73,6 @@ namespace HospitalRepository.NHibernateDatabaseAccess.Models
 
         public void UpdateDrugInfo(Drug drug)
         {
-            var uow = new Wrapper();
             var p = uow.DrugRep.FindByPredicate(x => x.Id == drug.Id).FirstOrDefault();
             if (p!=null)
             {
@@ -97,7 +89,6 @@ namespace HospitalRepository.NHibernateDatabaseAccess.Models
         }
         public void IncreaseDrugQuantity(Drug drug, int quantityIncreasement)
         {
-            var uow = new Wrapper();
             var p=uow.DrugRep.FindByPredicate(x=>x.Id==drug.Id).FirstOrDefault();
             if (p!=null)
             {

@@ -22,10 +22,9 @@ namespace HospitalRepository.NHibernateDatabaseAccess.Mapping
             Map(x => x.Email);
             Map(x => x.Address);
             References(x=>x.Hospital).Cascade.All();
-            HasMany(x => x.Drugs);
-            HasMany(x => x.Treatment);
             HasMany(x => x.Payment);
-            References(x => x.Apointment);
+            HasOne(x=>x.Bills);
+            HasOne(x => x.Apointment);
 
 
         }
