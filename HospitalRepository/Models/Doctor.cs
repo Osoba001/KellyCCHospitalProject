@@ -33,12 +33,12 @@ namespace HospitalRepository.NHibernateDatabaseAccess.Models
         public List<Apointment> ApprovedApontment(Doctor doctor)
         {
             var uow = new Wrapper();
-            return uow.Apointment.FindByPredicate(x => x.IsApprove).ToList();
+            return uow.Apointment.FindByPredicate(x => x.IsApprove && x.Doctor==doctor).ToList();
         }
         public List<Apointment> ApprovedApontmentOnAParticularDay(Doctor doctor, DateTime day)
         {
             var uow = new Wrapper();
-            return uow.Apointment.FindByPredicate(x=>x.ApointmentTime.Day==day.Day).ToList();
+            return uow.Apointment.FindByPredicate(x=>x.ApointmentTime.Day==day.Day && x.Doctor == doctor && x.IsApprove).ToList();
         }
 
         public void GivenTreatment(string name, decimal amount, Patient patient, Doctor doctor)
@@ -67,6 +67,47 @@ namespace HospitalRepository.NHibernateDatabaseAccess.Models
             BoughtDrug drugToBuy = new BoughtDrug(patient, drug, quantity, instruction);
             var uow = new Wrapper();
             uow.BoughtDrug.AddEntity(drugToBuy);
+            uow.Commit();
+        }
+
+        public void AttendToApointment(Apointment apointment)
+        {
+            var uow = new Wrapper();
+            apointment.IsAttendedTo = true;
+            apointment.ApointmentTime = DateTime.Now;
+            uow.Apointment.UpdateEntity(apointment);
+            uow.Commit();
+        }
+
+        public void AddTreatmentToAppointment(Apointment apointment, Treatment treatment)
+        {
+            var uow = new Wrapper();
+            apointment.Treatments.Add(treatment);
+            uow.Apointment.UpdateEntity(apointment);
+            uow.Commit();
+        }
+
+        public void RemoveTreatmentFromAppointment(Apointment apointment, Treatment treatment)
+        {
+            var uow = new Wrapper();
+            apointment.Treatments.Remove(treatment);
+            uow.Apointment.UpdateEntity(apointment);
+            uow.Commit();
+        }
+
+        public void AddBoughtDrugToAppointment(Apointment apointment, BoughtDrug drug)
+        {
+            var uow = new Wrapper();
+            apointment.Drugs.Add(drug);
+            uow.Apointment.UpdateEntity(apointment);
+            uow.Commit();
+        }
+
+        public void RemoveBoughtDrugToAppointment(Apointment apointment, BoughtDrug drug)
+        {
+            var uow = new Wrapper();
+            apointment.Drugs.Remove(drug);
+            uow.Apointment.UpdateEntity(apointment);
             uow.Commit();
         }
     }

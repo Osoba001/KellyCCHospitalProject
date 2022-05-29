@@ -19,9 +19,9 @@ namespace HospitalRepository.NHibernateDatabaseAccess.Models
 
 
         //Functionalities
-        public void AddNewDrugToStore(string name, DateTime exp, DateTime manufac, decimal unitprice, int quantity, Pharmacist pharmacist)
+        public void AddNewDrugToStore(string name, string purpose, string cauction, decimal unitprice, int quantity, Pharmacist pharmacist, Hospital hospital)
         {
-            Drug drug=new Drug(name, exp, manufac, unitprice, quantity, pharmacist);
+            Drug drug=new Drug(name, purpose, cauction, unitprice, quantity, pharmacist,hospital);
             var uow = new Wrapper();
             uow.DrugRep.AddEntity(drug);
             uow.Commit();
@@ -33,24 +33,11 @@ namespace HospitalRepository.NHibernateDatabaseAccess.Models
             return uow.DrugRep.FindByPredicate(x => x.Pharmacist == pharmacist).ToList();
         }
 
-        public List<Drug> GetExpiredDrugs(Pharmacist pharmacist)
-        {
-            var uow = new Wrapper();
-            return uow.DrugRep.FindByPredicate(x=>x.ExpiringDate<=DateTime.Now && pharmacist==pharmacist).ToList();
-        }
 
         public void RemoveDrugs(Drug drug)
         {
             var uow = new Wrapper();
             uow.DrugRep.RomoveEntity(drug);
-            uow.Commit();
-        }
-
-        public void RemoveExpiredDrugs(Pharmacist pharmacist)
-        {
-            var uow = new Wrapper();
-            var p=uow.DrugRep.FindByPredicate(x=>x.ExpiringDate>=DateTime.Now && x.Pharmacist== pharmacist).ToList();
-            p.ForEach(x => uow.DrugRep.RomoveEntity(x));
             uow.Commit();
         }
 
@@ -60,16 +47,22 @@ namespace HospitalRepository.NHibernateDatabaseAccess.Models
             var uow = new Wrapper();
             uow.BoughtDrug.UpdateEntity(drug);
             var d=uow.DrugRep.FindByPredicate(x=>x.Id==drug.Drug.Id).FirstOrDefault();
-            d.Quantity++;
-            uow.DrugRep.UpdateEntity(d);
-            uow.Commit();
+            if (d!=null)
+            {
+                d.Quantity = -drug.Quantity;
+                uow.DrugRep.UpdateEntity(d);
+                uow.Commit();
+            }
+            
         }
 
-        public void SellNewDrug(Patient patient, Drug drug, int quantity, string instruction)
+        public void SellDrug(Patient patient, Drug drug, int quantity, string instruction)
         {
            BoughtDrug newdrug=new BoughtDrug(patient, drug, quantity, instruction);
             newdrug.IsPharmacistAprove = true;
             var uow = new Wrapper();
+            drug.Quantity = -quantity;
+            uow.DrugRep.UpdateEntity(drug);
             uow.BoughtDrug.AddEntity(newdrug);
             uow.Commit();
         }
@@ -77,12 +70,32 @@ namespace HospitalRepository.NHibernateDatabaseAccess.Models
         public List<Drug> Top10MostBoughtDrugs(Hospital hospital)
         {
             var uow = new Wrapper();
-            return uow.BoughtDrug.FindByPredicate(x=>x.)
+            return uow.DrugRep.FindByPredicate(x=>x.Hospital==hospital)
+                .OrderByDescending(x=>x.BoughtDrugs.Count()).Take(10).ToList();
         }
 
-        public void UpdateDrug(Drug drug)
+        public void UpdateDrugInfo(Drug drug)
         {
-            throw new NotImplementedException();
+            var uow = new Wrapper();
+            var p = uow.DrugRep.FindByPredicate(x => x.Id == drug.Id).FirstOrDefault();
+            if (p!=null)
+            {
+                p.Purpose=drug.Purpose;
+                p.Caution=drug.Caution;
+                p.UnitPrice=drug.UnitPrice;
+                uow.DrugRep.UpdateEntity(p);
+                uow.Commit();
+            }
+        }
+        public void IncreaseDrugQuantity(Drug drug, int quantityIncreasement)
+        {
+            var uow = new Wrapper();
+            var p=uow.DrugRep.FindByPredicate(x=>x.Id==drug.Id).FirstOrDefault();
+            if (p!=null)
+            {
+                drug.Quantity = quantityIncreasement;
+                uow.DrugRep.UpdateEntity(p);
+            }
         }
     }
 }
