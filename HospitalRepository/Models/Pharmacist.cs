@@ -53,6 +53,10 @@ namespace HospitalRepository.NHibernateDatabaseAccess.Models
                 uow.DrugRep.UpdateEntity(d);
                 uow.Commit();
             }
+            else
+            {
+                throw new Exception("Drug dose not exist in the record");
+            }
             
         }
 
@@ -86,6 +90,10 @@ namespace HospitalRepository.NHibernateDatabaseAccess.Models
                 uow.DrugRep.UpdateEntity(p);
                 uow.Commit();
             }
+            else
+            {
+                throw new Exception("Drug dose not exist in the record");
+            }
         }
         public void IncreaseDrugQuantity(Drug drug, int quantityIncreasement)
         {
@@ -95,7 +103,13 @@ namespace HospitalRepository.NHibernateDatabaseAccess.Models
             {
                 drug.Quantity = quantityIncreasement;
                 uow.DrugRep.UpdateEntity(p);
+                uow.Commit();
             }
+            else
+            {
+                throw new Exception("Drug dose not exist in the record");
+            }
+
         }
     }
 }

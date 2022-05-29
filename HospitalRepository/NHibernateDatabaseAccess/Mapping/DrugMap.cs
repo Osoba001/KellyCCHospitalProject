@@ -14,11 +14,13 @@ namespace HospitalRepository.NHibernateDatabaseAccess.Mapping
             Id(x => x.Id);
             Map(x => x.Name);
             Map(x => x.UnitPrice);
-            Map(x => x.ExpiringDate);
-            Map(x => x.ManufactureDate);
+            Map(x => x.Purpose);
+            Map(x => x.Caution);
             Map(x => x.Photo);
             Map(x=>x.Quantity);
+            HasMany(x => x.BoughtDrugs);
             References(x=>x.Pharmacist);
+            References(x=>x.Hospital).Cascade.Delete();
         }
     }
 }

@@ -23,21 +23,37 @@ namespace HospitalRepository.NHibernateDatabaseAccess.Models
             Treatment = new List<Treatment>();
             Drugs = new List<BoughtDrug>();
             Payment = new List<Payment>();
-            Apointments = new List<Apointment>();
         }
         public virtual Hospital Hospital { get; set; }
         public virtual List<Treatment> Treatment { get; set; }
         public virtual List<BoughtDrug> Drugs { get; set; }
         public virtual List<Payment> Payment { get; set; }
-        public virtual List<Apointment> Apointments { get; set; }
+        public virtual Apointment Apointment { get; set; }
         public virtual bool IsRegister { get; set; }
         public virtual string HealthStatus { get; set; }
 
-        public void BookApointment(string discription, Patient patient)
+        public void BookNewApointment(string discription, Patient patient, DateTime time)
         {
-            Apointment apointment= new Apointment(discription,patient);
+            
             var uow = new Wrapper();
-            uow.Apointment.AddEntity(apointment);
+            var p = uow.Apointment.FindByPredicate(x => x.Patient == patient).FirstOrDefault();
+            if (p!=null)
+            {
+                p.IsApprove = false;
+                p.IsActive = true;
+                p.IsAttendedTo = false;
+                p.Discription = discription;
+                p.BookedTime = DateTime.Now;
+                p.ApointmentTime = time;
+                uow.Apointment.UpdateEntity(p);
+            }
+            else
+            {
+                Apointment apointment = new Apointment(discription, patient);
+                apointment.ApointmentTime = time;
+                uow.Apointment.AddEntity(apointment);
+            }
+            
             uow.Commit();
         }
 
@@ -56,13 +72,14 @@ namespace HospitalRepository.NHibernateDatabaseAccess.Models
             if (p != null)
             {
                 p.IsActive = false;
+                p.IsApprove = false;
                 uow.Apointment.UpdateEntity(p);
                 uow.Commit();
             }
             
         }
 
-        public List<Apointment> GetMyApointments(Patient patient)
+        public List<Apointment> GetMyApointment(Patient patient)
         {
             var uow = new Wrapper();
             return uow.Apointment.FindByPredicate(x => x.Patient == patient).ToList();
@@ -99,6 +116,12 @@ namespace HospitalRepository.NHibernateDatabaseAccess.Models
                 throw new Exception("This appointment does not exist");
             }
             
+        }
+
+        public List<Drug> GetAllDrugs(Hospital hospital)
+        {
+            var uow = new Wrapper();
+            return uow.DrugRep.FindByPredicate(x => x.Pharmacist.Hospital == hospital).ToList();
         }
     }
 }

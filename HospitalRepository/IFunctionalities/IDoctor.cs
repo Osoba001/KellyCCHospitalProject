@@ -13,5 +13,10 @@ namespace HospitalRepository.IFunctionalities
         void GivenTreatment(string name,decimal amount, Patient patient, Doctor doctor);
         void IsDoctorFree( Doctor doctor);
         void PrescribeDrug(Doctor doctor, Patient patient, Drug drug, int quantity, string instruction);
+        void AttendToApointment(Apointment apointment);
+        void AddTreatmentToAppointment(Apointment apointment, Treatment treatment);
+        void RemoveTreatmentFromAppointment(Apointment apointment, Treatment treatment);
+        void AddBoughtDrugToAppointment(Apointment apointment, BoughtDrug drug);
+        void RemoveBoughtDrugToAppointment(Apointment apointment, BoughtDrug drug);
     }
 }

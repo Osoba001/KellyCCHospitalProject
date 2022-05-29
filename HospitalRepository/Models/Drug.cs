@@ -12,27 +12,31 @@ namespace HospitalRepository.NHibernateDatabaseAccess.Models
         {
 
         }
-        public Drug(string name, DateTime exp, DateTime manufac, decimal unitprice, int quantity , Pharmacist pharmacist)
+        public Drug(string name, string purpose, string cauction, decimal unitprice, int quantity , Pharmacist pharmacist, Hospital hospital)
         {
             Name = name;
-            ExpiringDate = exp;
-            ManufactureDate= manufac;
+            Purpose=purpose;
+            Caution= cauction;
             UnitPrice = unitprice;
             Pharmacist= pharmacist;
+            Hospital = hospital;
             Quantity = quantity;
+            BoughtDrugs = new List<BoughtDrug>();
         }
         public virtual string Name { get; set; }
-        public virtual DateTime ExpiringDate { get; set; }
-        public virtual DateTime ManufactureDate { get; set; }
+        public virtual string Purpose { get; set; }
+        public virtual string Caution { get; set; }
         public virtual decimal UnitPrice { get; set; }
-        public virtual string Photo { get; set; }
+        public virtual ByteArrayContent Photo { get; set; }
         public virtual Pharmacist Pharmacist { get; set; }
+        public virtual Hospital Hospital { get; set; }
+        public virtual List<BoughtDrug> BoughtDrugs { get; set; }
         private int _quantity;
 
         public int Quantity
         {
             get { return _quantity; }
-            set { _quantity = value; }
+            set { _quantity = _quantity+ value; }
         }
 
     }

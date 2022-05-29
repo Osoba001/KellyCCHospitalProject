@@ -19,7 +19,7 @@ namespace HospitalRepository.NHibernateDatabaseAccess.Mapping
             Map(x => x.Email);
             Map(x => x.Address);
             References(x => x.StaffId);
-            References(x => x.Hospital).Cascade.All();
+            References(x => x.Hospital).Cascade.Delete();
             References(x => x.Doctor);
         }
     }

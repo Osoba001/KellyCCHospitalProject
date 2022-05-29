@@ -25,7 +25,7 @@ namespace HospitalRepository.NHibernateDatabaseAccess.Mapping
             HasMany(x => x.Drugs);
             HasMany(x => x.Treatment);
             HasMany(x => x.Payment);
-            HasMany(x => x.Apointments);
+            References(x => x.Apointment);
 
 
         }

@@ -8,13 +8,14 @@ namespace HospitalRepository.IFunctionalities
 {
     public interface IReceptionist
     {
-        List<Apointment> GetFuctureApoints();
+        List<Apointment> GetFuctureApoints(Hospital hospital);
         void AproveApoint(Apointment apointment);
-        void BookApointment(string discription, Patient patient);
-        List<Patient> PatientsSeenByParticularDoctoriEachDay(Guid huspitalId);
-        List<Patient> PatientsSeenWeekly(Guid huspitalId);
-        List<Patient> PatientsSeenMonthly(Guid huspitalId);
-        List<Patient> PatientsSeenQuarterly(Guid huspitalId);
-        List<Patient> PatientsSeenYealy(Guid huspitalId);
+        void RescheduleApoint(Apointment apointment,DateTime time);
+        void BookApointment(string discription, Patient patient, DateTime time);
+        List<Patient> PatientsSeenByDoctoriEachDay(Doctor doctor);
+        List<Patient> PatientsSeenWeekly(Doctor doctor);
+        List<Patient> PatientsSeenMonthly(Doctor doctor);
+        List<Patient> PatientsSeenQuarterly(Doctor doctor);
+        List<Patient> PatientsSeenYealy(Doctor doctor);
     }
 }
