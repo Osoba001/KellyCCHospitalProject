@@ -20,26 +20,26 @@ namespace HospitalRepository.NHibernateDatabaseAccess.Models
 
         //Functionalities
         IWrapper uow = new Wrapper();
-        public void AddNewDrugToStore(string name, string purpose, string cauction, decimal unitprice, int quantity, Pharmacist pharmacist, Hospital hospital)
+        public virtual void AddNewDrugToStore(string name, string purpose, string cauction, decimal unitprice, int quantity, Pharmacist pharmacist, Hospital hospital)
         {
             Drug drug=new Drug(name, purpose, cauction, unitprice, quantity, pharmacist,hospital);
             uow.DrugRep.AddEntity(drug);
             uow.Commit();
         }
 
-        public List<Drug> GetAllDrugs(Pharmacist pharmacist)
+        public virtual List<Drug> GetAllDrugs(Pharmacist pharmacist)
         {
             return uow.DrugRep.FindByPredicate(x => x.Pharmacist == pharmacist).ToList();
         }
 
 
-        public void RemoveDrugs(Drug drug)
+        public virtual void RemoveDrugs(Drug drug)
         {
             uow.DrugRep.RomoveEntity(drug);
             uow.Commit();
         }
 
-        public void SellDoctorPrescibedDrug(BoughtDrug drug)
+        public virtual void SellDoctorPrescibedDrug(BoughtDrug drug)
         {
             drug.IsPharmacistAprove = true;
             uow.BoughtDrug.UpdateEntity(drug);
@@ -52,7 +52,7 @@ namespace HospitalRepository.NHibernateDatabaseAccess.Models
 
         }
 
-        public void SellDrug(Patient patient, Drug drug, int quantity, string instruction)
+        public virtual void SellDrug(Patient patient, Drug drug, int quantity, string instruction)
         {
            BoughtDrug newdrug=new BoughtDrug(patient, drug, quantity, instruction);
             newdrug.IsPharmacistAprove = true;
@@ -64,14 +64,14 @@ namespace HospitalRepository.NHibernateDatabaseAccess.Models
             uow.Commit();
         }
 
-        public List<Drug> Top10MostBoughtDrugs(Hospital hospital)
+        public virtual List<Drug> Top10MostBoughtDrugs(Hospital hospital)
         {
             var uow = new Wrapper();
             return uow.DrugRep.FindByPredicate(x=>x.Hospital==hospital)
                 .OrderByDescending(x=>x.BoughtDrugs.Count()).Take(10).ToList();
         }
 
-        public void UpdateDrugInfo(Drug drug)
+        public virtual void UpdateDrugInfo(Drug drug)
         {
             var p = uow.DrugRep.FindByPredicate(x => x.Id == drug.Id).FirstOrDefault();
             if (p!=null)
@@ -87,7 +87,7 @@ namespace HospitalRepository.NHibernateDatabaseAccess.Models
                 throw new Exception("Drug dose not exist in the record");
             }
         }
-        public void IncreaseDrugQuantity(Drug drug, int quantityIncreasement)
+        public virtual void IncreaseDrugQuantity(Drug drug, int quantityIncreasement)
         {
             var p=uow.DrugRep.FindByPredicate(x=>x.Id==drug.Id).FirstOrDefault();
             if (p!=null)

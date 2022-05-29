@@ -8,6 +8,6 @@ namespace HospitalRepository.HospitalEnums
 {
     public enum ApointmentType
     {
-        Daily, Weekly
+        Daily, Weekly, Monthly, Quacterly, Yearly
     }
 }

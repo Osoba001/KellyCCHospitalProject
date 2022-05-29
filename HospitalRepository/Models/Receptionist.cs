@@ -21,12 +21,12 @@ namespace HospitalRepository.NHibernateDatabaseAccess.Models
         }
         //Functionalities
         IWrapper uow = new Wrapper();
-        public List<Apointment> GetFuctureApoints(Hospital hospital)
+        public virtual List<Apointment> GetFuctureApoints(Hospital hospital)
         {
             return uow.Apointment.FindByPredicate(x => x.Patient.Hospital == hospital).ToList();
         }
 
-        public void AproveApoint(Apointment apointment, Doctor doctor, DateTime time)
+        public virtual void AproveApoint(Apointment apointment, Doctor doctor, DateTime time)
         {
             apointment.Doctor=doctor;
             apointment.ApointmentTime = time;
@@ -35,14 +35,14 @@ namespace HospitalRepository.NHibernateDatabaseAccess.Models
             uow.Commit();
         }
 
-        public void RescheduleApoint(Apointment apointment, DateTime time)
+        public virtual void RescheduleApoint(Apointment apointment, DateTime time)
         {
             apointment.ApointmentTime = time;
             uow.Apointment.UpdateEntity(apointment);
             uow.Commit();
         }
 
-        public void BookApointment(string discription, Patient patient, DateTime time)
+        public virtual void BookApointment(string discription, Patient patient, DateTime time)
         {
             var p = uow.Apointment.FindByPredicate(x => x.Patient == patient).FirstOrDefault();
             if (p != null)
@@ -72,42 +72,47 @@ namespace HospitalRepository.NHibernateDatabaseAccess.Models
             uow.Commit();
         }
 
-        public List<Patient> PatientsSeenByDoctoriEachDay(Doctor doctor, DateTime time)
+        public virtual List<Patient> PatientsSeenByDoctorDaily(Doctor doctor)
         {
             return uow.PatientRepo.FindByPredicate(x=>x.
             Apointment.Doctor==doctor && x.
             Apointment.IsAttendedTo && x.
-            Apointment.ApointmentTime.Day==time.Day).ToList();
+            Apointment.ApointmentType== ApointmentType.Daily).ToList();
         }
 
-        public List<Patient> PatientsSeenWeekly(Doctor doctor, DateTime time)
+        public virtual List<Patient> PatientsSeenWeekly(Doctor doctor)
         {
-            throw new NotImplementedException();
+            return uow.PatientRepo.FindByPredicate(x => x.
+             Apointment.Doctor == doctor && x.
+             Apointment.IsAttendedTo && x.
+             Apointment.ApointmentType == ApointmentType.Weekly).ToList();
         }
 
-        public List<Patient> PatientsSeenMonthly(Doctor doctor, DateTime time)
+        public virtual List<Patient> PatientsSeenMonthly(Doctor doctor)
         {
             return uow.PatientRepo.FindByPredicate(x => x.
             Apointment.Doctor == doctor && x.
             Apointment.IsAttendedTo && x.
-            Apointment.ApointmentTime.Month == time.Month).ToList();
+            Apointment.ApointmentType == ApointmentType.Monthly).ToList();
         }
 
-        public List<Patient> PatientsSeenQuarterly(Doctor doctor, DateTime time)
+        public List<Patient> PatientsSeenQuarterly(Doctor doctor)
         {
-            throw new NotImplementedException();
-        }
-
-        public List<Patient> PatientsSeenYealy(Doctor doctor, DateTime time)
-        {
-            
             return uow.PatientRepo.FindByPredicate(x => x.
-            Apointment.Doctor == doctor && x.
-            Apointment.IsAttendedTo && x.
-            Apointment.ApointmentTime.Year == time.Year).ToList();
+             Apointment.Doctor == doctor && x.
+             Apointment.IsAttendedTo && x.
+             Apointment.ApointmentType == ApointmentType.Quacterly).ToList();
         }
 
-        public Apointment CheckPatientAPointment(Patient patient)
+        public virtual List<Patient> PatientsSeenYealy(Doctor doctor)
+        {
+            return uow.PatientRepo.FindByPredicate(x => x.
+             Apointment.Doctor == doctor && x.
+             Apointment.IsAttendedTo && x.
+             Apointment.ApointmentType == ApointmentType.Yearly).ToList();
+        }
+
+        public virtual Apointment CheckPatientAPointment(Patient patient)
         {
             if (patient.IsRegister)
             {
@@ -128,7 +133,7 @@ namespace HospitalRepository.NHibernateDatabaseAccess.Models
            
         }
 
-        public void ChechOutPatient(Patient patient)
+        public virtual void ChechOutPatient(Patient patient)
         {
             patient.Apointment.IsApprove = false;
             patient.Apointment.IsActive = true;

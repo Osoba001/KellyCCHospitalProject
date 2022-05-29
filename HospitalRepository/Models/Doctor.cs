@@ -31,16 +31,16 @@ namespace HospitalRepository.NHibernateDatabaseAccess.Models
 
         //Functionalities
         IWrapper uow = new Wrapper();
-        public List<Apointment> ApprovedApontment(Doctor doctor)
+        public virtual List<Apointment> ApprovedApontment(Doctor doctor)
         {
             return uow.Apointment.FindByPredicate(x => x.IsApprove && x.Doctor==doctor).ToList();
         }
-        public List<Apointment> ApprovedApontmentOnAParticularDay(Doctor doctor, DateTime day)
+        public virtual List<Apointment> ApprovedApontmentOnAParticularDay(Doctor doctor, DateTime day)
         {
             return uow.Apointment.FindByPredicate(x=>x.ApointmentTime.Day==day.Day && x.Doctor == doctor && x.IsApprove).ToList();
         }
 
-        public void GivenTreatment(string name, Patient patient, Doctor doctor)
+        public virtual void GivenTreatment(string name, Patient patient, Doctor doctor)
         {
             Treatment treatment = new Treatment(patient, name, doctor);
             uow.TreatmentReo.AddEntity(treatment);
@@ -49,7 +49,7 @@ namespace HospitalRepository.NHibernateDatabaseAccess.Models
             uow.Commit();
         }
 
-        public void IsDoctorFree(Doctor doctor)
+        public virtual void IsDoctorFree(Doctor doctor)
         {
             var d=uow.DoctorReo.FindByPredicate(x=>x.Id==doctor.Id).FirstOrDefault();
             if (d!=null)
@@ -61,14 +61,14 @@ namespace HospitalRepository.NHibernateDatabaseAccess.Models
 
         }
 
-        public void PrescribeDrug(Doctor doctor, Patient patient, Drug drug, int quantity, string instruction)
+        public virtual void PrescribeDrug(Doctor doctor, Patient patient, Drug drug, int quantity, string instruction)
         {
             BoughtDrug drugToBuy = new BoughtDrug(patient, drug, quantity, instruction);
             uow.BoughtDrug.AddEntity(drugToBuy);
             uow.Commit();
         }
 
-        public void AttendToApointment(Apointment apointment)
+        public virtual void AttendToApointment(Apointment apointment)
         {
             var uow = new Wrapper();
             apointment.IsAttendedTo = true;

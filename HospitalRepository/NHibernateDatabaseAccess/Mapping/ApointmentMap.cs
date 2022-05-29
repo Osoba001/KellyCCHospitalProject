@@ -18,6 +18,7 @@ namespace HospitalRepository.NHibernateDatabaseAccess.Mapping
             Map(x => x.ApointmentTime);
             Map(x => x.BookedTime);
             Map(x => x.Discription);
+            Map(x => x.ApointmentType);
             References(x => x.Patient).Cascade.All();
             References(x => x.Doctor);
         }

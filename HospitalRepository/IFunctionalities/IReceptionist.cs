@@ -14,7 +14,7 @@ namespace HospitalRepository.IFunctionalities
         void RescheduleApoint(Apointment apointment,DateTime time);
         void ChechOutPatient(Patient patient);
         void BookApointment(string discription, Patient patient, DateTime time);
-        List<Patient> PatientsSeenByDoctoriEachDay(Doctor doctor);
+        List<Patient> PatientsSeenByDoctorDaily(Doctor doctor);
         List<Patient> PatientsSeenWeekly(Doctor doctor);
         List<Patient> PatientsSeenMonthly(Doctor doctor);
         List<Patient> PatientsSeenQuarterly(Doctor doctor);

@@ -26,7 +26,7 @@ namespace HospitalRepository.NHibernateDatabaseAccess.Models
             Address = addres;
         }
         public virtual string Name { get; set; }
-        public Admin Administrator { get; set; }
+        public virtual Admin Administrator { get; set; }
         public virtual string RegistrationNo { get; set; }
         public virtual DateOnly RegisterDate { get; set; }
         public virtual List<Doctor> Doctors { get; set; }

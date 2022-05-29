@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HospitalRepository.HospitalEnums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,12 +18,15 @@ namespace HospitalRepository.NHibernateDatabaseAccess.Models
             Patient= patient;
             IsAttendedTo = false;
             IsActive =true;
-            IsApprove = false;  
+            IsApprove = false;
+            ApointmentType = ApointmentType.Monthly;
         }
-        public string Discription { get; set; }
+        public virtual string Discription { get; set; }
         public virtual Patient Patient { get; set; }
         public virtual Doctor Doctor { get; set; }
+        public virtual ApointmentType ApointmentType { get; set; }
         private DateTime _apointmentTime;
+
         public virtual DateTime ApointmentTime
         {
             get { return _apointmentTime; }

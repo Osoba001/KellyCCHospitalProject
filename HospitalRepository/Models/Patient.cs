@@ -31,7 +31,7 @@ namespace HospitalRepository.NHibernateDatabaseAccess.Models
         public virtual bool IsRegister { get; set; }
         public virtual string HealthStatus { get; set; }
 
-        public void BookNewApointment(string discription, Patient patient, DateTime time)
+        public virtual void BookNewApointment(string discription, Patient patient, DateTime time)
         {
             
             var uow = new Wrapper();

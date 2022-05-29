@@ -33,7 +33,7 @@ namespace HospitalRepository.NHibernateDatabaseAccess.Models
         public virtual List<BoughtDrug> BoughtDrugs { get; set; }
         private int _quantity;
 
-        public int Quantity
+        public virtual int Quantity
         {
             get { return _quantity; }
             set { _quantity = _quantity+ value; }
