@@ -8,7 +8,7 @@ namespace HospitalRepository.HospitalRepository.ModelRepository
 {
     public class StaffIDRepo:Repository<StaffID>,IStaffIDRepo
     {
-        public StaffIDRepo(ISession session) : base(session)
+        public StaffIDRepo(INHibernateHelper helper) : base(helper)
         {
 
         }

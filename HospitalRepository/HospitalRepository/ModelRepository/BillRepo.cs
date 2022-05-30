@@ -9,7 +9,7 @@ namespace HospitalRepository.HospitalRepository.ModelRepository
 {
     public class BillRepo:Repository<Bills>,IBillRepo
     {
-        public BillRepo(ISession session) : base(session)
+        public BillRepo(INHibernateHelper helper) : base(helper)
         {
 
         }

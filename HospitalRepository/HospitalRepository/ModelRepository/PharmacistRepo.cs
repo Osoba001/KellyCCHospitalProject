@@ -11,10 +11,8 @@ namespace HospitalRepository.HospitalRepository.ModelRepository
 {
     public class PharmacistRepo:Repository<Pharmacist>,IPharmacistRepo
     {
-        protected ISession _session;
-        public PharmacistRepo(ISession session):base(session)
+        public PharmacistRepo(INHibernateHelper helper) : base(helper)
         {
-            _session=session;
         }
 
     }

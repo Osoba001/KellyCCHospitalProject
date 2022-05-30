@@ -31,3 +31,4 @@ C:\Users\dell\source\repos\KellyCCBackEndEvaluation2\KellyCCBackEndEvaluation2\b
 C:\Users\dell\source\repos\KellyCCBackEndEvaluation2\KellyCCBackEndEvaluation2\bin\Debug\net6.0\HospitalRepository.dll
 C:\Users\dell\source\repos\KellyCCBackEndEvaluation2\KellyCCBackEndEvaluation2\bin\Debug\net6.0\HospitalRepository.pdb
 C:\Users\dell\source\repos\KellyCCBackEndEvaluation2\KellyCCBackEndEvaluation2\obj\Debug\net6.0\KellyCCBackEndEvaluation2.csproj.CopyComplete
+C:\Users\dell\source\repos\KellyCCBackEndEvaluation2\KellyCCBackEndEvaluation2\bin\Debug\net6.0\Autofac.dll

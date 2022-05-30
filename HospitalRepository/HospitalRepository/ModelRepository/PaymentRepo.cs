@@ -8,7 +8,7 @@ namespace HospitalRepository.HospitalRepository.ModelRepository
 {
     public class PaymentRepo:Repository<Payment>,IPaymentRepo
     {
-        public PaymentRepo(ISession session) : base(session)
+        public PaymentRepo(INHibernateHelper helper) : base(helper)
         {
 
         }

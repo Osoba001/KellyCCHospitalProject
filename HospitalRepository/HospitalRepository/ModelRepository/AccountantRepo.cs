@@ -11,7 +11,7 @@ namespace HospitalRepository.HospitalRepository.ModelRepository
 {
     public class AccountantRepo:Repository<Acountant>,IAcountantRepo
     {
-        public AccountantRepo(ISession session) : base(session)
+        public AccountantRepo(INHibernateHelper helper) : base(helper)
         {
         }
 

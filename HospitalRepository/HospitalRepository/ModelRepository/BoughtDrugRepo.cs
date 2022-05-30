@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace HospitalRepository.HospitalRepository.ModelRepository
 {
-    public class BoughtDrugsRepo:Repository<BoughtDrug>,IBoughtDrugRepo
+    public class BoughtDrugRepo:Repository<BoughtDrug>,IBoughtDrugRepo
     {
-        public BoughtDrugsRepo(ISession session) : base(session)
+        public BoughtDrugRepo(INHibernateHelper helper) : base(helper)
         {
 
         }

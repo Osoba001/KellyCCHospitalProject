@@ -30,7 +30,11 @@ namespace HospitalRepository.NHibernateDatabaseAccess.Models
         public virtual List<Treatment> Treatments { get; set; }
 
         //Functionalities
-        IWrapper uow = new Wrapper();
+        IWrapper uow;
+        public Doctor(IWrapper _uow)
+        {
+            uow= _uow;
+        }
         public virtual List<Apointment> ApprovedApontment(Doctor doctor)
         {
             return uow.Apointment.FindByPredicate(x => x.IsApprove && x.Doctor==doctor).ToList();
@@ -70,7 +74,6 @@ namespace HospitalRepository.NHibernateDatabaseAccess.Models
 
         public virtual void AttendToApointment(Apointment apointment)
         {
-            var uow = new Wrapper();
             apointment.IsAttendedTo = true;
             apointment.ApointmentTime = DateTime.Now;
             uow.Apointment.UpdateEntity(apointment);

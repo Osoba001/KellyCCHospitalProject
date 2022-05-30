@@ -6,7 +6,7 @@ namespace HospitalRepository.HospitalRepository.ModelRepository
 {
     public class DrugRepo:Repository<Drug>,IDrugRep
     {
-        public DrugRepo(ISession session) : base(session)
+        public DrugRepo(INHibernateHelper helper) : base(helper)
         {
         }
 

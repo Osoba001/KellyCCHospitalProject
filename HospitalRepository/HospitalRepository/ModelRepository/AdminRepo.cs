@@ -12,7 +12,7 @@ namespace HospitalRepository.HospitalRepository.ModelRepository
 {
     public class AdminRepo:Repository<Admin>,IAdminRepo
     {
-        public AdminRepo(ISession session) : base(session)
+        public AdminRepo(INHibernateHelper helper) : base(helper)
         {
 
         }

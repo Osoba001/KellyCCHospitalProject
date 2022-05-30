@@ -13,7 +13,7 @@ namespace HospitalRepository.HospitalRepository.ModelRepository
     public class HospitalRepo : Repository<Hospital>, IHospitalRepo
     {
         protected ISession session;
-        public HospitalRepo(ISession session) : base(session)
+        public HospitalRepo(INHibernateHelper helper) : base(helper)
         {
             _session=session;
         }

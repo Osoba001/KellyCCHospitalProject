@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "Mxw5tYecGH+fZqDnNmIcE0GWBqW622EsG+Jp3h7cJ8r1XAMf3Lg663kVMvQdFKE6BwLnEMjipyXAQzlkDoKuCg==",
+  "dgSpecHash": "RpyAGtiIsG2HV3IwxJbHyHlgFkT4DmKKaRhWfYYtyr/MNN9JLvRCEMO/SFy/SVm5ZgZ3lmPsFfe5NVn5XxDYqg==",
   "success": true,
   "projectFilePath": "C:\\Users\\dell\\source\\repos\\KellyCCBackEndEvaluation2\\KellyCCBackEndEvaluation2\\KellyCCBackEndEvaluation2.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\dell\\.nuget\\packages\\antlr3.runtime\\3.5.1\\antlr3.runtime.3.5.1.nupkg.sha512",
+    "C:\\Users\\dell\\.nuget\\packages\\autofac\\6.4.0\\autofac.6.4.0.nupkg.sha512",
     "C:\\Users\\dell\\.nuget\\packages\\fluentnhibernate\\3.1.0\\fluentnhibernate.3.1.0.nupkg.sha512",
     "C:\\Users\\dell\\.nuget\\packages\\iesi.collections\\4.0.4\\iesi.collections.4.0.4.nupkg.sha512",
     "C:\\Users\\dell\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
@@ -43,7 +44,7 @@
     "C:\\Users\\dell\\.nuget\\packages\\system.console\\4.3.0\\system.console.4.3.0.nupkg.sha512",
     "C:\\Users\\dell\\.nuget\\packages\\system.data.sqlclient\\4.8.3\\system.data.sqlclient.4.8.3.nupkg.sha512",
     "C:\\Users\\dell\\.nuget\\packages\\system.diagnostics.debug\\4.3.0\\system.diagnostics.debug.4.3.0.nupkg.sha512",
-    "C:\\Users\\dell\\.nuget\\packages\\system.diagnostics.diagnosticsource\\4.3.0\\system.diagnostics.diagnosticsource.4.3.0.nupkg.sha512",
+    "C:\\Users\\dell\\.nuget\\packages\\system.diagnostics.diagnosticsource\\4.7.1\\system.diagnostics.diagnosticsource.4.7.1.nupkg.sha512",
     "C:\\Users\\dell\\.nuget\\packages\\system.diagnostics.tools\\4.3.0\\system.diagnostics.tools.4.3.0.nupkg.sha512",
     "C:\\Users\\dell\\.nuget\\packages\\system.diagnostics.tracing\\4.3.0\\system.diagnostics.tracing.4.3.0.nupkg.sha512",
     "C:\\Users\\dell\\.nuget\\packages\\system.globalization\\4.3.0\\system.globalization.4.3.0.nupkg.sha512",

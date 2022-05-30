@@ -20,7 +20,11 @@ namespace HospitalRepository.NHibernateDatabaseAccess.Models
 
         }
         //Functionalities
-        IWrapper uow = new Wrapper();
+        IWrapper uow;
+        public Receptionist(IWrapper _uow)
+        {
+            uow=_uow;
+        }
         public virtual List<Apointment> GetFuctureApoints(Hospital hospital)
         {
             return uow.Apointment.FindByPredicate(x => x.Patient.Hospital == hospital).ToList();

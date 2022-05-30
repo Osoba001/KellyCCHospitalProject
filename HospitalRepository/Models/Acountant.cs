@@ -20,11 +20,13 @@ namespace HospitalRepository.NHibernateDatabaseAccess.Models
         {
            
         }
-       
-
 
         //Functionalities
-        IWrapper uow = new Wrapper();
+        IWrapper uow;
+        public Acountant(IWrapper _uow)
+        {
+            uow=_uow;
+        }
         public virtual List<Patient> PatientsOwing(Hospital hospital)
         {
              return uow.PatientRepo.FindByPredicate(x=>x
@@ -35,7 +37,6 @@ namespace HospitalRepository.NHibernateDatabaseAccess.Models
 
         public virtual List<Payment> AllPayment(Hospital hospital)
         {
-            var uow = new Wrapper();
             return uow.Payment.FindByPredicate(x => x.Hospital == hospital).ToList();
         }
 
@@ -72,21 +73,22 @@ namespace HospitalRepository.NHibernateDatabaseAccess.Models
 
         public virtual void BillPatientOnDrug(Patient patient, BoughtDrug boughtDrug)
         {
-            var b=uow.BillRepo.FindByPredicate(x=>x.Patient==patient).FirstOrDefault();
-            if (b==null) patient.Bills = new Bills(patient);
+            var b = uow.BillRepo.FindByPredicate(x => x.Patient == patient).FirstOrDefault();
             b.BoughtDrugs.Add(boughtDrug);
             uow.BillRepo.UpdateEntity(b);
             uow.Commit();
+           // throw new NotImplementedException();
         }
 
         public virtual void BillPatientOnTreatment(Patient patient, Treatment treatment, decimal amount)
         {
-            treatment.Amount=amount;
+            treatment.Amount = amount;
             var b = uow.BillRepo.FindByPredicate(x => x.Patient == patient).FirstOrDefault();
             if (b == null) patient.Bills = new Bills(patient);
             b.Treatments.Add(treatment);
             uow.BillRepo.UpdateEntity(b);
             uow.Commit();
+            // throw new NotImplementedException();
         }
     }
 }

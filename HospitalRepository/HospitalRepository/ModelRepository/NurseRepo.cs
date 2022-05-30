@@ -11,10 +11,9 @@ namespace HospitalRepository.HospitalRepository.ModelRepository
 {
     public class NurseRepo:Repository<Nurse>,INurseRepo
     {
-        protected ISession _session;
-        public NurseRepo(ISession session) : base(session)
+        public NurseRepo(INHibernateHelper helper) : base(helper)
         {
-            _session=session;
+;
         }
     }
 }

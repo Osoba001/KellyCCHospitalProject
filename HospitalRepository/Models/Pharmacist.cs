@@ -23,7 +23,11 @@ namespace HospitalRepository.NHibernateDatabaseAccess.Models
 
 
         //Functionalities
-        IWrapper uow = new Wrapper();
+        IWrapper uow;
+        public Pharmacist(IWrapper _uow)
+        {
+            uow= _uow;
+        }
         public virtual void AddNewDrugToStore(string name, string purpose, string cauction, decimal unitprice, int quantity, Pharmacist pharmacist, Hospital hospital)
         {
             Drug drug=new Drug(name, purpose, cauction, unitprice, quantity, pharmacist,hospital);
@@ -49,7 +53,7 @@ namespace HospitalRepository.NHibernateDatabaseAccess.Models
             uow.BoughtDrug.UpdateEntity(drug);
             var p = drug.Patient.Bills;
             p.BoughtDrugs.Add(drug);
-            var d=uow.DrugRep.FindByPredicate(x=>x.Id==drug.Drug.Id).FirstOrDefault();
+            var d = uow.DrugRep.FindByPredicate(x => x.Id == drug.Drug.Id).FirstOrDefault();
             d.Quantity = -drug.Quantity;
             uow.DrugRep.UpdateEntity(d);
             uow.Commit();
@@ -70,7 +74,6 @@ namespace HospitalRepository.NHibernateDatabaseAccess.Models
 
         public virtual List<Drug> Top10MostBoughtDrugs(Hospital hospital)
         {
-            var uow = new Wrapper();
             return uow.DrugRep.FindByPredicate(x=>x.Hospital==hospital)
                 .OrderByDescending(x=>x.BoughtDrugs.Count()).Take(10).ToList();
         }

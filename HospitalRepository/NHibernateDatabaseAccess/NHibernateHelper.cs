@@ -11,11 +11,11 @@ using System.Threading.Tasks;
 
 namespace HospitalRepository.NHibernateDatabaseAccess
 {
-    public static class NHibernateHelper
+    public class NHibernateHelper : INHibernateHelper
     {
-        private static ISessionFactory _sessionFactory;
+        private ISessionFactory _sessionFactory;
 
-        public static ISessionFactory SessionFactory
+        public ISessionFactory SessionFactory
         {
             get
             {
@@ -26,13 +26,12 @@ namespace HospitalRepository.NHibernateDatabaseAccess
                 return _sessionFactory;
             }
         }
-        public static void InitializeSessionFatory()
+        public void InitializeSessionFatory()
         {
             //Data Source=.;Initial Catalog=Sample1;Integrated Security=True
             _sessionFactory = Fluently.Configure()
                 .Database(MsSqlConfiguration.MsSql2000
                 .ConnectionString(@"Data Source=.;Initial Catalog=HospitalDB;Integrated Security=True")
-                .ShowSql()
                 )
                 .Mappings(m => m.FluentMappings
                 .AddFromAssemblyOf<HospitalMap>())
@@ -40,7 +39,7 @@ namespace HospitalRepository.NHibernateDatabaseAccess
                 .Create(true, true))
                 .BuildSessionFactory();
         }
-        public static ISession OpenSession()
+        public ISession OpenSession()
         {
             return SessionFactory.OpenSession();
         }
